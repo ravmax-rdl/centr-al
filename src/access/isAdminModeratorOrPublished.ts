@@ -13,4 +13,11 @@ export const isAdminModeratorOrPublished: Access = ({ req: { user } }) => {
       },
     };
   }
+
+  // Non-logged in users can only read published docs
+  return {
+    _status: {
+      equals: 'published',
+    },
+  };
 };
