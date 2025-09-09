@@ -1,16 +1,18 @@
 import type { CollectionConfig } from 'payload';
 
 import { anyone } from '@/access/anyone';
+import { authenticated } from '@/access/authenticated';
 import { isAdmin, isAdminFieldLevel } from '@/access/isAdmin';
-import { isAdminOrSelf } from '@/access/isAdminOrSelf';
+import { isAdminOrModerator } from '@/access/isAdminorModerator';
+import { protectRoles } from './hooks/protectRoles';
 
 export const Users: CollectionConfig = {
   slug: 'users',
   access: {
     create: anyone,
-    delete: isAdminOrSelf,
-    read: isAdminOrSelf,
-    update: isAdminOrSelf,
+    delete: isAdmin,
+    read: authenticated,
+    update: isAdminOrModerator,
   },
   admin: {
     defaultColumns: ['name', 'email'],
@@ -23,7 +25,7 @@ export const Users: CollectionConfig = {
       type: 'text',
     },
     {
-      name: 'role',
+      name: 'roles',
       saveToJWT: true,
       hasMany: true,
       type: 'select',
@@ -37,6 +39,9 @@ export const Users: CollectionConfig = {
       required: true,
       access: {
         update: isAdminFieldLevel,
+      },
+      hooks: {
+        beforeChange: [protectRoles],
       },
     },
   ],

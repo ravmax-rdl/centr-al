@@ -8,7 +8,8 @@ import {
 import path from 'path'
 import { fileURLToPath } from 'url'
 
-import { anyone } from '../access/anyone'
+import { isAdminOrEditor } from '@/access/isAdminorEditor'
+import { isAdminOrModeratorOrEditor } from '@/access/isAdminorModeratororEditor'
 import { authenticated } from '../access/authenticated'
 
 const filename = fileURLToPath(import.meta.url)
@@ -18,10 +19,10 @@ export const Media: CollectionConfig = {
   slug: 'media',
   folders: true,
   access: {
-    create: authenticated,
-    delete: authenticated,
-    read: anyone,
-    update: authenticated,
+    create: isAdminOrEditor,
+    delete: isAdminOrModeratorOrEditor,
+    read: authenticated,
+    update: isAdminOrModeratorOrEditor,
   },
   fields: [
     {
