@@ -2,7 +2,6 @@ import type { CollectionConfig } from 'payload'
 
 import { slugField } from '@/fields/slug'
 import { hero } from '@/heros/config'
-import { authenticated } from '../../access/authenticated'
 import { Archive } from '../../blocks/ArchiveBlock/config'
 import { CallToAction } from '../../blocks/CallToAction/config'
 import { Content } from '../../blocks/Content/config'
@@ -12,6 +11,7 @@ import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
 
+import { anyone } from '@/access/anyone'
 import { isAdmin } from '@/access/isAdmin'
 import {
   MetaDescriptionField,
@@ -26,7 +26,7 @@ export const Pages: CollectionConfig<'pages'> = {
   access: {
     create: isAdmin,
     delete: isAdmin,
-    read: authenticated,
+    read: anyone,
     update: isAdmin,
   },
   // This config controls what's populated by default when a page is referenced

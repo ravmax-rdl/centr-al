@@ -9,7 +9,6 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 
-import { authenticated } from '../../access/authenticated'
 import { Banner } from '../../blocks/Banner/config'
 import { Code } from '../../blocks/Code/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
@@ -17,6 +16,7 @@ import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
 
+import { anyone } from '@/access/anyone'
 import { isAdminOrEditor } from '@/access/isAdminorEditor'
 import { isAdminOrModeratorOrEditor } from '@/access/isAdminorModeratororEditor'
 import { slugField } from '@/fields/slug'
@@ -33,7 +33,7 @@ export const Posts: CollectionConfig<'posts'> = {
   access: {
     create: isAdminOrEditor,
     delete: isAdminOrModeratorOrEditor,
-    read: authenticated,
+    read: anyone,
     update: isAdminOrModeratorOrEditor,
   },
   // This config controls what's populated by default when a post is referenced
