@@ -408,7 +408,7 @@ export interface Category {
 export interface User {
   id: number;
   name?: string | null;
-  roles: ('admin' | 'editor' | 'moderator' | 'user')[];
+  roles: ('admin' | 'moderator' | 'user')[];
   updatedAt: string;
   createdAt: string;
   email: string;

@@ -9,7 +9,7 @@ import { protectRoles } from './hooks/protectRoles';
 export const Users: CollectionConfig = {
   slug: 'users',
   access: {
-    create: anyone,
+    create: isAdmin,
     delete: isAdmin,
     read: authenticated,
     update: isAdminOrModerator,
@@ -36,7 +36,6 @@ export const Users: CollectionConfig = {
       type: 'select',
       options: [
         { label: 'Admin', value: 'admin' },
-        { label: 'Editor', value: 'editor' },
         { label: 'Moderator', value: 'moderator' },
         { label: 'User', value: 'user' },
       ],
