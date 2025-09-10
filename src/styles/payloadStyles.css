@@ -1,0 +1,40 @@
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+
+/* Nav Group Toggle */
+.nav-group__toggle {
+  padding-top: 4px;
+padding-bottom: 6px;
+}
+
+
+/* Nav Group Label */
+.nav-group__label {
+font-weight: bold;
+font-size: 14px;
+font-family: Inter;
+padding-top: 0px;
+padding-bottom: 0px;
+}
+
+
+/* Dashboard Card Labels */
+.dashboard__label {
+font-size: 36px;
+padding-top: 19px;
+padding-bottom: 19px;
+}
+
+/* Dashboard Card */
+.card {
+padding-top: 30px;
+padding-bottom: 30px;
+}
+
+/* Dashboard Card Title */
+.card__title {
+  font-weight: normal;
+font-size: 14px;
+}
