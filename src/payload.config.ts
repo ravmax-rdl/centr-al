@@ -1,12 +1,14 @@
-import { s3Storage } from '@payloadcms/storage-s3';
 import { postgresAdapter } from '@payloadcms/db-postgres';
 import { resendAdapter } from '@payloadcms/email-resend';
+import { s3Storage } from '@payloadcms/storage-s3';
 
-import sharp from 'sharp'; // sharp-import
 import path from 'path';
 import { buildConfig, PayloadRequest } from 'payload';
+import sharp from 'sharp'; // sharp-import
 import { fileURLToPath } from 'url';
 
+import { defaultLexical } from '@/fields/defaultLexical';
+import { Authors } from './collections/Authors';
 import { Categories } from './collections/Categories';
 import { Media } from './collections/Media';
 import { Pages } from './collections/Pages';
@@ -15,7 +17,6 @@ import { Users } from './collections/Users';
 import { Footer } from './Footer/config';
 import { Header } from './Header/config';
 import { plugins } from './plugins';
-import { defaultLexical } from '@/fields/defaultLexical';
 import { getServerSideURL } from './utilities/getURL';
 
 const filename = fileURLToPath(import.meta.url);
@@ -57,7 +58,7 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
-  collections: [Pages, Posts, Media, Categories, Users],
+  collections: [Pages, Posts, Media, Categories, Users, Authors],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins: [
