@@ -17,7 +17,7 @@ import { populateAuthors } from './hooks/populateAuthors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost'
 
 import { anyone } from '@/access/anyone'
-import { isAdminOrEditor } from '@/access/isAdminorEditor'
+import { authenticated } from '@/access/authenticated'
 import { isAdminOrModeratorOrEditor } from '@/access/isAdminorModeratororEditor'
 import { slugField } from '@/fields/slug'
 import {
@@ -31,7 +31,7 @@ import {
 export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',
   access: {
-    create: isAdminOrEditor,
+    create: authenticated,
     delete: isAdminOrModeratorOrEditor,
     read: anyone,
     update: isAdminOrModeratorOrEditor,
