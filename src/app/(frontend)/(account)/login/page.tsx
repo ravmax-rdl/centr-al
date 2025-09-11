@@ -19,7 +19,7 @@ export default async function Page({
 
   const { message } = await searchParams;
   return (
-    <div className="h-[100vh] w-full mx-auto sm:max-w-sm">
+    <div className="h-[80vh] w-full mx-auto sm:max-w-sm">
       {message && (
         <div className="flex justify-center mt-8">
           <p className="w-auto inline-block mx-auto p-4 bg-emerald-100 text-emerald-950 border-e-emerald-950 rounded-md border">
