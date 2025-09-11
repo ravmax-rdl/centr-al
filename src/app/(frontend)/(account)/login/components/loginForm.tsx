@@ -55,7 +55,7 @@ export default function LoginForm(): ReactElement {
       <div className="mt-4 text-center">
         <Link
           href={'/forgot-password'}
-          className="underline underline-offset-4 text-emerald-950/50"
+          className="underline underline-offset-4 text-cyan-300/50 hover:text-cyan-300"
         >
           Forgot password?
         </Link>
