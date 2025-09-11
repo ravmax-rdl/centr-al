@@ -22,7 +22,7 @@ export default async function Page({
     <div className="h-[80vh] w-full mx-auto sm:max-w-sm">
       {message && (
         <div className="flex justify-center mt-8">
-          <p className="w-auto inline-block mx-auto p-4 bg-emerald-100 text-emerald-950 border-e-emerald-950 rounded-md border">
+          <p className="w-auto inline-block mx-auto p-4 bg-cyan-100 text-cyan-950 border-e-cyan-950 rounded-md border">
             {message}
           </p>
         </div>

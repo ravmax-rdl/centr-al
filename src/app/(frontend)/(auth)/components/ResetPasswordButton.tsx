@@ -26,18 +26,18 @@ export const ResetPasswordButton = ({ email }: { email: string }) => {
     <div>
       <button
         disabled={isClicked}
-        className={`${!isClicked ? 'cursor-pointer' : 'cursor-not-allowed'} mt-8 mb-4 w-auto px-4 py-2 rounded-md bg-emerald-50 text-emerald-950 border border-emerald-950 shadow-sm flex items-center justify-center gap-4`}
+        className={`${!isClicked ? 'cursor-pointer' : 'cursor-not-allowed'} mt-8 mb-4 w-auto px-4 py-2 rounded-md bg-cyan-50 text-cyan-950 border border-cyan-950 shadow-sm flex items-center justify-center gap-4`}
         type="button"
         onClick={handleClick}
       >
         {!isClicked ? 'Reset Password' : 'Password reset requested!'}
         <Loader className={`animate-spin ${isLoading ? 'inline-block' : 'hidden'}`} />
       </button>
-      {isClicked && <div className='text-emerald-950/50'>
-        <p>
-          Check your mail!
-        </p>
-        </div>}
+      {isClicked && (
+        <div className="text-cyan-950/50">
+          <p>Check your mail!</p>
+        </div>
+      )}
     </div>
   );
 };

@@ -11,7 +11,7 @@ const Template: React.FC<{ children: ReactNode }> = async ({ children }) => {
 
   return (
     <>
-      <div className='bg-emerald-500 p-4'>
+      <div className="bg-cyan-500 p-4">
         <LogoutButton />
       </div>
       {children}

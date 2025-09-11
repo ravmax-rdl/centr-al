@@ -31,7 +31,7 @@ export const LogoutButton = () => {
       <button
         onClick={handleLogout}
         disabled={loading}
-        className="[px-2 py-1 cursor-pointer flex items-center text-emerald-50 fill-emerald-50 rounded-md border border-emerald-50]"
+        className="[px-2 py-1 cursor-pointer flex items-center text-cyan-50 fill-cyan-50 rounded-md border border-cyan-50]"
       >
         {loading ? (
           'Logging out...'
