@@ -1,17 +1,17 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig } from 'payload';
 
-import { anyone } from '@/access/anyone'
-import { isAdminOrEditor } from '@/access/isAdminorEditor'
-import { isAdminOrModeratorOrEditor } from '@/access/isAdminorModeratororEditor'
-import { slugField } from '@/fields/slug'
+import { anyone } from '@/access/anyone';
+import { isAdminOrAuthor } from '@/access/isAdminorAuthor';
+import { isAdminOrModeratorOrAuthor } from '@/access/isAdminorModeratororAuthor';
+import { slugField } from '@/fields/slug';
 
 export const Categories: CollectionConfig = {
   slug: 'categories',
   access: {
-    create: isAdminOrEditor,
-    delete: isAdminOrModeratorOrEditor,
+    create: isAdminOrAuthor,
+    delete: isAdminOrModeratorOrAuthor,
     read: anyone,
-    update: isAdminOrModeratorOrEditor,
+    update: isAdminOrModeratorOrAuthor,
   },
   admin: {
     useAsTitle: 'title',
@@ -24,4 +24,4 @@ export const Categories: CollectionConfig = {
     },
     ...slugField(),
   ],
-}
+};

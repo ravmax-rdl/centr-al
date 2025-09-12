@@ -1,15 +1,15 @@
+import { isAdminFieldLevel } from '@/access/isAdmin';
 import { isAdminOrModerator } from '@/access/isAdminorModerator';
 import { getServerSideURL } from '@/utilities/getURL';
 import type { CollectionConfig } from 'payload';
+import { protectRoles } from '../Users/hooks/protectRoles';
 
 export const Authors: CollectionConfig = {
   slug: 'authors',
   access: {
     create: () => true,
-    admin: () => false,
-    // delete: isAdminOrModerator,
-    // read: isAdminOrModerator,
-    // update: self,
+    delete: isAdminOrModerator,
+    read: isAdminOrModerator,
   },
   admin: {
     defaultColumns: ['name', 'email'],
@@ -61,6 +61,25 @@ export const Authors: CollectionConfig = {
         },
       ],
     },
+    {
+      name: 'roles',
+      saveToJWT: true,
+      hasMany: true,
+      type: 'select',
+      options: [
+        { label: 'Author', value: 'author' },
+        { label: 'User', value: 'user' },
+      ],
+      defaultValue: ['user'],
+      required: true,
+      access: {
+        update: isAdminFieldLevel,
+      },
+      hooks: {
+        beforeChange: [protectRoles],
+      },
+    },
   ],
+
   timestamps: true,
 };

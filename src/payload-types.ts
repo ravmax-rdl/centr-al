@@ -804,6 +804,7 @@ export interface Author {
   id: number;
   firstName?: string | null;
   lastName?: string | null;
+  roles: ('author' | 'user')[];
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -1411,6 +1412,7 @@ export interface UsersSelect<T extends boolean = true> {
 export interface AuthorsSelect<T extends boolean = true> {
   firstName?: T;
   lastName?: T;
+  roles?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
