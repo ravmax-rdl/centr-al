@@ -1,7 +1,6 @@
 import type { CollectionConfig } from 'payload';
 
 import { anyone } from '@/access/anyone';
-import { authenticated } from '@/access/authenticated';
 import { isAdmin, isAdminFieldLevel } from '@/access/isAdmin';
 import { isAdminOrModerator } from '@/access/isAdminorModerator';
 import { protectRoles } from './hooks/protectRoles';
@@ -12,7 +11,7 @@ export const Users: CollectionConfig = {
   access: {
     create: anyone,
     delete: isAdmin,
-    read: authenticated,
+    read: isAdmin,
     update: isAdminOrModerator,
   },
   admin: {
