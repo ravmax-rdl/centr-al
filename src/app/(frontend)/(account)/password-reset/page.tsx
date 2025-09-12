@@ -2,7 +2,6 @@ import React from 'react';
 import { getUser } from '../../(auth)/actions/getUser';
 import { redirect } from 'next/navigation';
 import ResetForm from './components/resetPasswordForm';
-import NotFound from '../../not-found';
 
 interface SearchParams {
   [key: string]: string | undefined;

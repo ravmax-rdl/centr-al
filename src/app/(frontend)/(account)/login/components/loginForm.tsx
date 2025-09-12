@@ -12,7 +12,6 @@ import { FormContainer } from '@/components/UserForm/FormContainer';
 export default function LoginForm(): ReactElement {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const router = useRouter();
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault();

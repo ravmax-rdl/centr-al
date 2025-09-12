@@ -7,7 +7,6 @@ import { Input } from '@/components/UserForm/Input';
 import { FormContainer } from '@/components/UserForm/FormContainer';
 import { ForgotPassword } from '../actions/forgotPassword';
 import { Response } from '../../create-account/actions/create';
-import { set } from 'react-hook-form';
 
 export default function ForgotForm(): ReactElement {
   const [isLoading, setIsLoading] = useState(false);
