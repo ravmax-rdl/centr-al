@@ -31,6 +31,7 @@ import {
 
 export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',
+  folders: true,
   access: {
     create: isAdminOrAuthor,
     delete: isAdminOrModeratorOrAuthor,

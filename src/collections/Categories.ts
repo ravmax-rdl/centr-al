@@ -1,17 +1,17 @@
 import type { CollectionConfig } from 'payload';
 
 import { anyone } from '@/access/anyone';
-import { isAdminOrAuthor } from '@/access/isAdminorAuthor';
-import { isAdminOrModeratorOrAuthor } from '@/access/isAdminorModeratororAuthor';
+import { isAdminOrModerator } from '@/access/isAdminorModerator';
 import { slugField } from '@/fields/slug';
+import { isAdmin } from '@/access/isAdmin';
 
 export const Categories: CollectionConfig = {
   slug: 'categories',
   access: {
-    create: isAdminOrAuthor,
-    delete: isAdminOrModeratorOrAuthor,
+    create: isAdmin,
+    delete: isAdminOrModerator,
     read: anyone,
-    update: isAdminOrModeratorOrAuthor,
+    update: isAdminOrModerator,
   },
   admin: {
     useAsTitle: 'title',
