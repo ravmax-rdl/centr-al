@@ -1,13 +1,13 @@
-import type { Field } from 'payload'
+import type { Field } from 'payload';
 
 import {
   FixedToolbarFeature,
   HeadingFeature,
   InlineToolbarFeature,
   lexicalEditor,
-} from '@payloadcms/richtext-lexical'
+} from '@payloadcms/richtext-lexical';
 
-import { linkGroup } from '@/fields/linkGroup'
+import { linkGroup } from '@/fields/linkGroup';
 
 export const hero: Field = {
   name: 'hero',
@@ -35,6 +35,10 @@ export const hero: Field = {
           label: 'Low Impact',
           value: 'lowImpact',
         },
+        {
+          label: 'Landing',
+          value: 'landing',
+        },
       ],
       required: true,
     },
@@ -48,7 +52,7 @@ export const hero: Field = {
             HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
-          ]
+          ];
         },
       }),
       label: false,
@@ -69,4 +73,4 @@ export const hero: Field = {
     },
   ],
   label: false,
-}
+};
