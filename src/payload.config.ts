@@ -27,6 +27,9 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
     user: Users.slug,
+    components: {
+      actions: ['@/components/LogoutButton#LogoutButton'],
+    },
     livePreview: {
       breakpoints: [
         {
