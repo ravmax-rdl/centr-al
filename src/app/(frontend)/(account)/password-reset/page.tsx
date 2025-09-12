@@ -11,11 +11,11 @@ interface SearchParams {
 export default async function Page({
   searchParams,
 }: {
-  searchParams: SearchParams;
+  searchParams: Promise<SearchParams>;
 }): Promise<React.ReactElement> {
   const user = await getUser();
   if (user) {
-    redirect('/dashboard');
+    redirect('/admin');
   }
   const { message, token } = await searchParams;
 

@@ -4,10 +4,10 @@ import React, { ReactElement, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { create, Response } from '../actions/create';
 import Link from 'next/link';
-import { FormContainer } from '@/components/AuthorForm/FormContainer';
+import { FormContainer } from '@/components/UserForm/FormContainer';
 import { set } from 'react-hook-form';
-import { Input } from '@/components/AuthorForm/Input';
-import SubmitButton from '@/components/AuthorForm/SubmitButton';
+import { Input } from '@/components/UserForm/Input';
+import SubmitButton from '@/components/UserForm/SubmitButton';
 
 export default function CreateForm(): ReactElement {
   const [isLoading, setIsLoading] = useState(false);
@@ -23,8 +23,7 @@ export default function CreateForm(): ReactElement {
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
     const confirmPassword = formData.get('confirmPassword') as string;
-    const firstName = formData.get('firstName') as string;
-    const lastName = formData.get('lastName') as string;
+    const name = formData.get('name') as string;
 
     if (password !== confirmPassword) {
       setError('Passwords do not match');
@@ -35,8 +34,7 @@ export default function CreateForm(): ReactElement {
     const result: Response = await create({
       email,
       password,
-      firstName,
-      lastName,
+      name,
     });
     setIsLoading(false);
 
@@ -50,24 +48,15 @@ export default function CreateForm(): ReactElement {
   }
 
   return (
-    <FormContainer heading="Create an account">
+    <FormContainer heading="Create User Account">
       <form className={'flex flex-col gap-4'} onSubmit={handleSubmit}>
-        <div className="flex flex-row flex-1/2 gap-2">
-          <Input
-            label="First Name"
-            name="firstName"
-            type="text"
-            placeholder="Enter your first name"
-            required
-          />
-          <Input
-            label="Last Name"
-            name="lastName"
-            type="text"
-            placeholder="Enter your last name"
-            required
-          />
-        </div>
+        <Input
+          label="Full Name"
+          name="name"
+          type="text"
+          placeholder="Enter your full name"
+          required
+        />
         <Input label="Email" name="email" type="email" placeholder="Enter your email" required />
         <Input
           label="Password"

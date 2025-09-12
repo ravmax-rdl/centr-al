@@ -9,7 +9,7 @@ export async function ForgotPassword({ email }: { email: string }): Promise<Resp
 
   try {
     await payload.forgotPassword({
-      collection: 'authors',
+      collection: 'users',
       data: { email },
     });
   } catch (error) {

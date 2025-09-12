@@ -3,7 +3,7 @@
 import { getPayload } from 'payload';
 import config from '@payload-config';
 import { cookies } from 'next/headers';
-import type { Author } from '@/payload-types';
+import type { User } from '@/payload-types';
 import { Response } from '../../create-account/actions/create';
 
 interface LoginParams {
@@ -14,14 +14,14 @@ interface LoginParams {
 export type Result = {
   exp?: number;
   token?: string;
-  user?: Author;
+  user?: User;
 };
 
 export async function login({ email, password }: LoginParams): Promise<Response> {
   const payload = await getPayload({ config });
   try {
     const result: Result = await payload.login({
-      collection: 'authors',
+      collection: 'users',
       data: {
         email,
         password,

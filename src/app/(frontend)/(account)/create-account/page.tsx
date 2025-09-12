@@ -7,7 +7,7 @@ export default async function Page(): Promise<React.ReactElement> {
   
   const user = await getUser();
   if (user) {
-    redirect('/dashboard');
+    redirect('/admin');
   }
 
   return (

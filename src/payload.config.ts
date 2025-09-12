@@ -8,7 +8,6 @@ import sharp from 'sharp'; // sharp-import
 import { fileURLToPath } from 'url';
 
 import { defaultLexical } from '@/fields/defaultLexical';
-import { Authors } from './collections/Authors';
 import { Categories } from './collections/Categories';
 import { Media } from './collections/Media';
 import { Pages } from './collections/Pages';
@@ -58,7 +57,7 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
-  collections: [Pages, Posts, Media, Categories, Users, Authors],
+  collections: [Pages, Posts, Media, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins: [

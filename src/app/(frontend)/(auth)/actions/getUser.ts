@@ -1,12 +1,12 @@
 'use server';
 
 import { headers as getHeaders, cookies } from 'next/headers';
-import type { Author } from '@/payload-types';
+import type { User } from '@/payload-types';
 import { getPayload } from 'payload';
 import configPromise from '@payload-config';
 import type { Payload } from 'payload';
 
-export async function getUser(): Promise<Author | null> {
+export async function getUser(): Promise<User | null> {
   const headers = await getHeaders();
   const cookieStore = await cookies();
   const token = cookieStore.get('payload-token')?.value;
@@ -21,7 +21,7 @@ export async function getUser(): Promise<Author | null> {
 
       const { user } = await payload.auth({ headers: authHeaders });
 
-      if (user?.collection === 'authors') {
+      if (user?.collection === 'users') {
         return user || null;
       }
     } catch (error) {

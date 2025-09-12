@@ -2,12 +2,12 @@
 
 import React, { ReactElement, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import SubmitButton from '@/components/AuthorForm/SubmitButton';
-import { Input } from '@/components/AuthorForm/Input';
+import SubmitButton from '@/components/UserForm/SubmitButton';
+import { Input } from '@/components/UserForm/Input';
 import { login } from '../actions/login';
 import { Response } from '../../create-account/actions/create';
 import Link from 'next/link';
-import { FormContainer } from '@/components/AuthorForm/FormContainer';
+import { FormContainer } from '@/components/UserForm/FormContainer';
 
 export default function LoginForm(): ReactElement {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +29,7 @@ export default function LoginForm(): ReactElement {
 
     if (result.success) {
       // Force full page reload to ensure server-side auth state is updated
-      window.location.href = '/dashboard';
+      window.location.href = '/admin';
     } else {
       setError(result.error || 'An unexpected error occurred. Please try again.');
     }

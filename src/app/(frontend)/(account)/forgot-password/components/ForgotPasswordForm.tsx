@@ -2,9 +2,9 @@
 
 import React, { ReactElement, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import SubmitButton from '@/components/AuthorForm/SubmitButton';
-import { Input } from '@/components/AuthorForm/Input';
-import { FormContainer } from '@/components/AuthorForm/FormContainer';
+import SubmitButton from '@/components/UserForm/SubmitButton';
+import { Input } from '@/components/UserForm/Input';
+import { FormContainer } from '@/components/UserForm/FormContainer';
 import { ForgotPassword } from '../actions/forgotPassword';
 import { Response } from '../../create-account/actions/create';
 import { set } from 'react-hook-form';
@@ -40,12 +40,7 @@ export default function ForgotForm(): ReactElement {
     <FormContainer heading="Forgot Password?">
       <div className="w-full mx-auto sm:max-w-sm">
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <Input
-            name="email"
-            type="email"
-            label="Email"
-            required
-          />
+          <Input name="email" type="email" label="Email" required />
           {error && <div className="text-red-400">{error}</div>}
           <SubmitButton loading={isLoading} text="Reset Password" />
         </form>

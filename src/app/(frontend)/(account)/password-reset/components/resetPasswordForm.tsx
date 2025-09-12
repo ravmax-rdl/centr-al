@@ -2,9 +2,9 @@
 
 import React, { ReactElement, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import SubmitButton from '@/components/AuthorForm/SubmitButton';
-import { Input } from '@/components/AuthorForm/Input';
-import { FormContainer } from '@/components/AuthorForm/FormContainer';
+import SubmitButton from '@/components/UserForm/SubmitButton';
+import { Input } from '@/components/UserForm/Input';
+import { FormContainer } from '@/components/UserForm/FormContainer';
 import { resetPassword } from '../actions/resetPassword';
 import { Response } from '../../create-account/actions/create';
 import { set } from 'react-hook-form';

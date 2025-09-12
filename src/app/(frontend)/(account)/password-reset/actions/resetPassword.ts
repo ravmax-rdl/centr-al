@@ -14,7 +14,7 @@ export async function resetPassword({ token, password }: ResetPasswordParams): P
 
   try {
     (await payload).resetPassword({
-      collection: 'authors',
+      collection: 'users',
       data: { token, password },
       overrideAccess: true,
     });
