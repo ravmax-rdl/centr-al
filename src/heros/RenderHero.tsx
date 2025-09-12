@@ -5,7 +5,7 @@ import type { Page } from '@/payload-types';
 import { HighImpactHero } from '@/heros/HighImpact';
 import { LowImpactHero } from '@/heros/LowImpact';
 import { MediumImpactHero } from '@/heros/MediumImpact';
-import { LandingHero } from './LandingHero';
+import { LandingHero } from './LandingHero/server';
 
 const heroes = {
   highImpact: HighImpactHero,

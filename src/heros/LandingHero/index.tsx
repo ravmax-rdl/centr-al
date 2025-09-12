@@ -5,11 +5,21 @@ import React, { useEffect } from 'react';
 import type { Page } from '@/payload-types';
 
 import { CMSLink } from '@/components/Link';
-import { Media } from '@/components/Media';
 import RichText from '@/components/RichText';
 import { LandingHeroBars } from '@/components/LandingHero';
 
-export const LandingHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
+interface LandingHeroClientProps {
+  links?: Page['hero']['links'];
+  media?: Page['hero']['media'];
+  richText?: Page['hero']['richText'];
+  userCount?: number;
+}
+
+export const LandingHeroClient: React.FC<LandingHeroClientProps> = ({
+  links,
+  richText,
+  userCount,
+}) => {
   const { setHeaderTheme } = useHeaderTheme();
 
   useEffect(() => {
@@ -23,7 +33,7 @@ export const LandingHero: React.FC<Page['hero']> = ({ links, media, richText }) 
     >
       {/* Background LandingHeroBars */}
       <div className="absolute inset-0 w-full h-full">
-        <LandingHeroBars />
+        <LandingHeroBars userCount={userCount} />
       </div>
 
       {/* Foreground content */}

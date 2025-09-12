@@ -1,5 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Github, Instagram, Linkedin, Menu, X } from 'lucide-react';
+import React, { useState } from 'react';
+import Image from 'next/image';
+
+// Utility function to format user count for display
+function formatUserCount(count: number): string {
+  if (count >= 1000000) {
+    return `${(count / 1000000).toFixed(1)}M`;
+  } else if (count >= 1000) {
+    return `${(count / 1000).toFixed(1)}K`;
+  } else {
+    return count.toString();
+  }
+}
 
 type AvatarProps = {
   imageSrc: string;
@@ -12,19 +23,22 @@ const Avatar: React.FC<AvatarProps> = ({ imageSrc, delay }) => {
       className="relative h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 rounded-full overflow-hidden border-2 border-gray-700 shadow-lg animate-fadeIn"
       style={{ animationDelay: `${delay}ms` }}
     >
-      <img src={imageSrc} alt="User avatar" className="h-full w-full object-cover" />
+      <Image
+        src={imageSrc}
+        alt="User avatar"
+        width={40}
+        height={40}
+        className="h-full w-full object-cover"
+      />
       <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
     </div>
   );
 };
 
-const TrustElements: React.FC = () => {
-  const avatars = [
-    'https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?auto=compress&cs=tinysrgb&w=100',
-    'https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=100',
-    'https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=100',
-    'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=100',
-  ];
+const TrustElements: React.FC<{ userCount?: number }> = ({ userCount }) => {
+  const avatars = ['/profile1.jpg', '/profile1.jpg', '/profile1.jpg', '/profile1.jpg'];
+
+  const displayCount = userCount !== undefined ? formatUserCount(userCount) : '2.4K';
 
   return (
     <div className="inline-flex items-center space-x-3 bg-gray-900/60 backdrop-blur-sm rounded-full py-2 px-3 sm:py-2 sm:px-4 text-xs sm:text-sm">
@@ -37,7 +51,7 @@ const TrustElements: React.FC = () => {
         className="text-white animate-fadeIn whitespace-nowrap font-space"
         style={{ animationDelay: '800ms' }}
       >
-        <span className="text-white font-semibold">2.4K</span> currently on the platform
+        <span className="text-white font-semibold">{displayCount}</span> currently on the platform
       </p>
     </div>
   );
@@ -95,7 +109,7 @@ const GradientBars: React.FC = () => {
   );
 };
 
-export const LandingHeroBars: React.FC = () => {
+export const LandingHeroBars: React.FC<{ userCount?: number }> = ({ userCount }) => {
   return (
     <section className="relative min-h-screen flex flex-col items-center px-6 sm:px-8 md:px-12 overflow-hidden">
       <div className="absolute inset-0 bg-gray-950"></div>
@@ -103,7 +117,7 @@ export const LandingHeroBars: React.FC = () => {
 
       <div className="relative z-10 text-center w-full max-w-4xl mx-auto flex flex-col items-start sm:items-center py-8 sm:py-16">
         <div className="mt-80 sm:mt-56">
-          <TrustElements />
+          <TrustElements userCount={userCount} />
         </div>
       </div>
     </section>
