@@ -3,7 +3,12 @@
 @tailwind utilities;
 
 @layer base {
-  h1,
+  h1 {
+    font-family: var(--font-instrument-serif);
+    font-size: unset;
+    font-weight: unset;
+  }
+
   h2,
   h3,
   h4,
@@ -100,4 +105,16 @@ html {
 html[data-theme='dark'],
 html[data-theme='light'] {
   opacity: initial;
+}
+
+@layer utilities {
+  .font-serif-italic {
+    font-family: var(--font-instrument-serif);
+    font-style: italic;
+  }
+
+  .font-serif-normal {
+    font-family: var(--font-instrument-serif);
+    font-style: normal;
+  }
 }

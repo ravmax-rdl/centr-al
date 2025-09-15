@@ -202,6 +202,7 @@ const config = {
       fontFamily: {
         mono: ['var(--font-geist-mono)'],
         sans: ['var(--font-geist-sans)'],
+        serif: ['var(--font-instrument-serif)'],
       },
       keyframes: {
         'accordion-down': {
@@ -220,6 +221,7 @@ const config = {
               '--tw-prose-body': 'var(--text)',
               '--tw-prose-headings': 'var(--text)',
               h1: {
+                fontFamily: 'var(--font-instrument-serif)',
                 fontWeight: 'normal',
                 marginBottom: '0.25em',
               },
@@ -230,6 +232,7 @@ const config = {
           css: [
             {
               h1: {
+                fontFamily: 'var(--font-instrument-serif)',
                 fontSize: '2.5rem',
               },
               h2: {
@@ -243,6 +246,7 @@ const config = {
           css: [
             {
               h1: {
+                fontFamily: 'var(--font-instrument-serif)',
                 fontSize: '3.5rem',
               },
               h2: {
