@@ -1,3 +1,9 @@
+:root {
+  --font-body: 'Inter', serif;
+  --font-mono: 'Fira Code', monospace;
+  --font-serif: 'Instrument Serif', serif;
+}
+
 /* Nav Group Toggle */
 .nav-group__toggle {
   padding-top: 4px;
