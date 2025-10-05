@@ -1,25 +1,26 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig } from 'payload';
 
-import { slugField } from '@/fields/slug'
-import { hero } from '@/heros/config'
-import { Archive } from '../../blocks/ArchiveBlock/config'
-import { CallToAction } from '../../blocks/CallToAction/config'
-import { Content } from '../../blocks/Content/config'
-import { FormBlock } from '../../blocks/Form/config'
-import { MediaBlock } from '../../blocks/MediaBlock/config'
-import { populatePublishedAt } from '../../hooks/populatePublishedAt'
-import { generatePreviewPath } from '../../utilities/generatePreviewPath'
-import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
+import { slugField } from '@/fields/slug';
+import { hero } from '@/heros/config';
+import { Archive } from '../../blocks/ArchiveBlock/config';
+import { CallToAction } from '../../blocks/CallToAction/config';
+import { Content } from '../../blocks/Content/config';
+import { FormBlock } from '../../blocks/Form/config';
+import { MediaBlock } from '../../blocks/MediaBlock/config';
+import { Process } from '../../blocks/Process/config';
+import { populatePublishedAt } from '../../hooks/populatePublishedAt';
+import { generatePreviewPath } from '../../utilities/generatePreviewPath';
+import { revalidateDelete, revalidatePage } from './hooks/revalidatePage';
 
-import { anyone } from '@/access/anyone'
-import { isAdmin } from '@/access/isAdmin'
+import { anyone } from '@/access/anyone';
+import { isAdmin } from '@/access/isAdmin';
 import {
   MetaDescriptionField,
   MetaImageField,
   MetaTitleField,
   OverviewField,
   PreviewField,
-} from '@payloadcms/plugin-seo/fields'
+} from '@payloadcms/plugin-seo/fields';
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -44,9 +45,9 @@ export const Pages: CollectionConfig<'pages'> = {
           slug: typeof data?.slug === 'string' ? data.slug : '',
           collection: 'pages',
           req,
-        })
+        });
 
-        return path
+        return path;
       },
     },
     preview: (data, { req }) =>
@@ -75,7 +76,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Process],
               required: true,
               admin: {
                 initCollapsed: true,
@@ -136,4 +137,4 @@ export const Pages: CollectionConfig<'pages'> = {
     },
     maxPerDoc: 50,
   },
-}
+};

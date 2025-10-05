@@ -15,6 +15,7 @@ import { mergeOpenGraph } from '@/utilities/mergeOpenGraph';
 import { draftMode } from 'next/headers';
 
 import './globals.css';
+import '../../styles/payloadStyles.css';
 import { getServerSideURL } from '@/utilities/getURL';
 
 const instrumentSerif = Instrument_Serif({

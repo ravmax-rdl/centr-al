@@ -197,7 +197,7 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | ProcessBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -792,6 +792,27 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProcessBlock".
+ */
+export interface ProcessBlock {
+  circleText?: string | null;
+  badgeFirstText?: string | null;
+  badgeSecondText?: string | null;
+  badgeThirdText?: string | null;
+  badgeFourthText?: string | null;
+  buttonFirstText?: string | null;
+  buttonSecondText?: string | null;
+  title?: string | null;
+  /**
+   * Hex color code for the gradient light effect
+   */
+  lightColor?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'process';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1085,6 +1106,7 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        process?: T | ProcessBlockSelect<T>;
       };
   meta?:
     | T
@@ -1187,6 +1209,23 @@ export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
   enableIntro?: T;
   introContent?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProcessBlock_select".
+ */
+export interface ProcessBlockSelect<T extends boolean = true> {
+  circleText?: T;
+  badgeFirstText?: T;
+  badgeSecondText?: T;
+  badgeThirdText?: T;
+  badgeFourthText?: T;
+  buttonFirstText?: T;
+  buttonSecondText?: T;
+  title?: T;
+  lightColor?: T;
   id?: T;
   blockName?: T;
 }
