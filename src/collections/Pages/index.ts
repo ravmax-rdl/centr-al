@@ -8,6 +8,7 @@ import { Content } from '../../blocks/Content/config';
 import { FormBlock } from '../../blocks/Form/config';
 import { MediaBlock } from '../../blocks/MediaBlock/config';
 import { Process } from '../../blocks/Process/config';
+import { ScrollText } from '../../blocks/ScrollText/config';
 import { populatePublishedAt } from '../../hooks/populatePublishedAt';
 import { generatePreviewPath } from '../../utilities/generatePreviewPath';
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage';
@@ -76,7 +77,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Process],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Process, ScrollText],
               required: true,
               admin: {
                 initCollapsed: true,

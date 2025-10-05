@@ -197,7 +197,7 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | ProcessBlock)[];
+  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | ProcessBlock | ScrollTextBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -813,6 +813,26 @@ export interface ProcessBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ScrollTextBlock".
+ */
+export interface ScrollTextBlock {
+  /**
+   * The text that will animate on scroll
+   */
+  text: string;
+  animationType: 'letter' | 'word';
+  /**
+   * The opacity of text before it animates in
+   */
+  textOpacity: 'none' | 'soft' | 'medium';
+  textAlign?: ('left' | 'center' | 'right') | null;
+  fontSize?: ('sm' | 'base' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '8xl') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'scrollText';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1107,6 +1127,7 @@ export interface PagesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         process?: T | ProcessBlockSelect<T>;
+        scrollText?: T | ScrollTextBlockSelect<T>;
       };
   meta?:
     | T
@@ -1226,6 +1247,19 @@ export interface ProcessBlockSelect<T extends boolean = true> {
   buttonSecondText?: T;
   title?: T;
   lightColor?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ScrollTextBlock_select".
+ */
+export interface ScrollTextBlockSelect<T extends boolean = true> {
+  text?: T;
+  animationType?: T;
+  textOpacity?: T;
+  textAlign?: T;
+  fontSize?: T;
   id?: T;
   blockName?: T;
 }

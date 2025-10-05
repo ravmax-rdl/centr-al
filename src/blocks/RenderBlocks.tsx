@@ -8,6 +8,7 @@ import { ContentBlock } from '@/blocks/Content/Component';
 import { FormBlock } from '@/blocks/Form/Component';
 import { MediaBlock } from '@/blocks/MediaBlock/Component';
 import { ProcessBlock } from '@/blocks/Process/Component';
+import { ScrollTextBlock } from '@/blocks/ScrollText/Component';
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -16,6 +17,7 @@ const blockComponents = {
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   process: ProcessBlock,
+  scrollText: ScrollTextBlock,
 };
 
 export const RenderBlocks: React.FC<{
