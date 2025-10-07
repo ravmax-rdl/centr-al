@@ -57,6 +57,8 @@ const TrustElements: React.FC<{ userCount?: number }> = ({ userCount }) => {
   );
 };
 
+export { TrustElements };
+
 const GradientBars: React.FC = () => {
   const [numBars] = useState(15);
 
@@ -111,15 +113,9 @@ const GradientBars: React.FC = () => {
 
 export const LandingHeroBars: React.FC<{ userCount?: number }> = ({ userCount }) => {
   return (
-    <section className="relative min-h-screen flex flex-col items-center px-6 sm:px-8 md:px-12 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center overflow-hidden">
       <div className="absolute inset-0 bg-gray-950"></div>
       <GradientBars />
-
-      <div className="relative z-10 text-center w-full max-w-4xl mx-auto flex flex-col items-start sm:items-center py-8 sm:py-16">
-        <div className="mt-80 sm:mt-56">
-          <TrustElements userCount={userCount} />
-        </div>
-      </div>
     </section>
   );
 };

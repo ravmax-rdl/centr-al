@@ -6,7 +6,7 @@ import type { Page } from '@/payload-types';
 
 import { CMSLink } from '@/components/Link';
 import RichText from '@/components/RichText';
-import { LandingHeroBars } from '@/components/LandingHero';
+import { LandingHeroBars, TrustElements } from '@/components/LandingHero';
 
 interface LandingHeroClientProps {
   links?: Page['hero']['links'];
@@ -38,16 +38,17 @@ export const LandingHeroClient: React.FC<LandingHeroClientProps> = ({
 
       {/* Foreground content */}
       <div className="container mb-8 z-20 relative flex items-center justify-center">
-        <div className="md:text-center ">
+        <div className="md:text-center flex flex-col items-center">
+          <TrustElements userCount={userCount} />
           {richText && (
             <RichText
-              className="mb-6 [&_h1]:text-5xl md:[&_h1]:text-7xl lg:[&_h1]:text-8xl"
+              className="mb-6 mt-16 [&_h1]:text-5xl md:[&_h1]:text-7xl lg:[&_h1]:text-8xl"
               data={richText}
               enableGutter={false}
             />
           )}
           {Array.isArray(links) && links.length > 0 && (
-            <ul className="flex md:justify-center gap-4">
+            <ul className="flex md:justify-center gap-4 mb-8">
               {links.map(({ link }, i) => {
                 return (
                   <li key={i}>
