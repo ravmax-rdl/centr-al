@@ -76,6 +76,7 @@ export interface Config {
     forms: Form;
     'form-submissions': FormSubmission;
     search: Search;
+    'payload-kv': PayloadKv;
     'payload-jobs': PayloadJob;
     'payload-folders': FolderInterface;
     'payload-locked-documents': PayloadLockedDocument;
@@ -97,6 +98,7 @@ export interface Config {
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
     search: SearchSelect<false> | SearchSelect<true>;
+    'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
     'payload-folders': PayloadFoldersSelect<false> | PayloadFoldersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -197,7 +199,18 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | ProcessBlock | ScrollTextBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | ProcessBlock
+    | ScrollTextBlock
+    | FeaturesBlock
+    | SponsorsBlock
+    | TestimonialsBlock
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -833,6 +846,70 @@ export interface ScrollTextBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeaturesBlock".
+ */
+export interface FeaturesBlock {
+  title: string;
+  description?: string | null;
+  features?:
+    | {
+        icon?: (number | null) | Media;
+        title: string;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'features';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SponsorsBlock".
+ */
+export interface SponsorsBlock {
+  title?: string | null;
+  sponsors?:
+    | {
+        logo: number | Media;
+        name: string;
+        url?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Speed of the scrolling animation (pixels per second)
+   */
+  speed?: number | null;
+  /**
+   * Speed when hovering over the slider
+   */
+  speedOnHover?: number | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'sponsors';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialsBlock".
+ */
+export interface TestimonialsBlock {
+  testimonials?:
+    | {
+        quote: string;
+        author: string;
+        role?: string | null;
+        company?: string | null;
+        avatar?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'testimonials';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -904,6 +981,23 @@ export interface Search {
     | null;
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-kv".
+ */
+export interface PayloadKv {
+  id: number;
+  key: string;
+  data:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1041,10 +1135,6 @@ export interface PayloadLockedDocument {
         value: number | Search;
       } | null)
     | ({
-        relationTo: 'payload-jobs';
-        value: number | PayloadJob;
-      } | null)
-    | ({
         relationTo: 'payload-folders';
         value: number | FolderInterface;
       } | null);
@@ -1128,6 +1218,9 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         process?: T | ProcessBlockSelect<T>;
         scrollText?: T | ScrollTextBlockSelect<T>;
+        features?: T | FeaturesBlockSelect<T>;
+        sponsors?: T | SponsorsBlockSelect<T>;
+        testimonials?: T | TestimonialsBlockSelect<T>;
       };
   meta?:
     | T
@@ -1260,6 +1353,61 @@ export interface ScrollTextBlockSelect<T extends boolean = true> {
   textOpacity?: T;
   textAlign?: T;
   fontSize?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FeaturesBlock_select".
+ */
+export interface FeaturesBlockSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  features?:
+    | T
+    | {
+        icon?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SponsorsBlock_select".
+ */
+export interface SponsorsBlockSelect<T extends boolean = true> {
+  title?: T;
+  sponsors?:
+    | T
+    | {
+        logo?: T;
+        name?: T;
+        url?: T;
+        id?: T;
+      };
+  speed?: T;
+  speedOnHover?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialsBlock_select".
+ */
+export interface TestimonialsBlockSelect<T extends boolean = true> {
+  testimonials?:
+    | T
+    | {
+        quote?: T;
+        author?: T;
+        role?: T;
+        company?: T;
+        avatar?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -1635,6 +1783,14 @@ export interface SearchSelect<T extends boolean = true> {
       };
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-kv_select".
+ */
+export interface PayloadKvSelect<T extends boolean = true> {
+  key?: T;
+  data?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
