@@ -5,10 +5,13 @@ import { hero } from '@/heros/config';
 import { Archive } from '../../blocks/ArchiveBlock/config';
 import { CallToAction } from '../../blocks/CallToAction/config';
 import { Content } from '../../blocks/Content/config';
+import { Features } from '../../blocks/Features/config';
 import { FormBlock } from '../../blocks/Form/config';
 import { MediaBlock } from '../../blocks/MediaBlock/config';
 import { Process } from '../../blocks/Process/config';
 import { ScrollText } from '../../blocks/ScrollText/config';
+import { Sponsors } from '@/blocks/Sponsors/config';
+import { Testimonials } from '@/blocks/Testimonials/config';
 import { populatePublishedAt } from '../../hooks/populatePublishedAt';
 import { generatePreviewPath } from '../../utilities/generatePreviewPath';
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage';
@@ -77,7 +80,18 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Process, ScrollText],
+              blocks: [
+                CallToAction,
+                Content,
+                MediaBlock,
+                Archive,
+                FormBlock,
+                Process,
+                ScrollText,
+                Features,
+                Sponsors,
+                Testimonials,
+              ],
               required: true,
               admin: {
                 initCollapsed: true,

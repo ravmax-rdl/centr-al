@@ -5,19 +5,25 @@ import type { Page } from '@/payload-types';
 import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component';
 import { CallToActionBlock } from '@/blocks/CallToAction/Component';
 import { ContentBlock } from '@/blocks/Content/Component';
+import { FeaturesBlock } from '@/blocks/Features/Component';
 import { FormBlock } from '@/blocks/Form/Component';
 import { MediaBlock } from '@/blocks/MediaBlock/Component';
 import { ProcessBlock } from '@/blocks/Process/Component';
 import { ScrollTextBlock } from '@/blocks/ScrollText/Component';
+import { SponsorsBlock } from '@/blocks/Sponsors/Component';
+import { TestimonialsBlock } from '@/blocks/Testimonials/Component';
 
 const blockComponents = {
   archive: ArchiveBlock,
   content: ContentBlock,
   cta: CallToActionBlock,
+  features: FeaturesBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   process: ProcessBlock,
   scrollText: ScrollTextBlock,
+  sponsors: SponsorsBlock,
+  testimonials: TestimonialsBlock,
 };
 
 export const RenderBlocks: React.FC<{
