@@ -8,11 +8,11 @@ export const FormContainer = ({
   heading: string;
 }) => {
   return (
-    <div className="flex gap-8 min-h-full flex-col justify-center items-center">
-      <div className='mb-8'>
-        <h1 className="text-3xl font-bold text-center">{heading}</h1>
+    <div className="flex min-h-full flex-col justify-center py-12">
+      <div className="mb-10">
+        <h1 className="text-3xl font-semibold text-center tracking-tight">{heading}</h1>
       </div>
-      <div className="w-full mx-auto sm:max-w-sm">{children}</div>
+      <div className="w-full mx-auto sm:max-w-md">{children}</div>
     </div>
   );
 };

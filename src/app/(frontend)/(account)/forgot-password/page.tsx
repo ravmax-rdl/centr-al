@@ -1,14 +1,11 @@
 import React from 'react';
 import ForgotForm from './components/ForgotPasswordForm';
+import { AccountLayout } from '../components/AccountLayout';
 
-const Page = () => {
+export default function Page() {
   return (
-    <div className="h-[100vh] w-full mx-auto sm:max-w-sm">
-      <div className="flex justify-center mt-8">
-        <ForgotForm />
-      </div>
-    </div>
+    <AccountLayout minHeight="100vh">
+      <ForgotForm />
+    </AccountLayout>
   );
-};
-
-export default Page;
+}

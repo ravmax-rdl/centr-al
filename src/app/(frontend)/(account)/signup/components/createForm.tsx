@@ -1,82 +1,104 @@
 'use client';
 
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
-import { create, Response } from '../actions/create';
+import { useForm } from 'react-hook-form';
+import { create } from '../actions/create';
 import Link from 'next/link';
 import { FormContainer } from '@/components/UserForm/FormContainer';
-import { Input } from '@/components/UserForm/Input';
 import SubmitButton from '@/components/UserForm/SubmitButton';
+import { FormInput } from '../../components/FormInput';
+
+interface CreateFormData {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
 
 export default function CreateForm(): ReactElement {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [isPending, startTransition] = useTransition();
   const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors },
+  } = useForm<CreateFormData>();
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>): Promise<void> {
-    event.preventDefault();
-    setIsLoading(true);
-    setError(null);
-
-    const formData = new FormData(event.currentTarget);
-    const email = formData.get('email') as string;
-    const password = formData.get('password') as string;
-    const confirmPassword = formData.get('confirmPassword') as string;
-    const name = formData.get('name') as string;
-
-    if (password !== confirmPassword) {
-      setError('Passwords do not match');
-      setIsLoading(false);
+  const onSubmit = async (data: CreateFormData) => {
+    if (data.password !== data.confirmPassword) {
+      setError('confirmPassword', { message: 'Passwords do not match' });
       return;
     }
 
-    const result: Response = await create({
-      email,
-      password,
-      name,
-    });
-    setIsLoading(false);
+    startTransition(async () => {
+      const result = await create({
+        email: data.email,
+        password: data.password,
+        name: data.name,
+      });
 
-    if (result.success) {
-      router.push(
-        `/login?message=${encodeURIComponent('Check your email to verify your account.')}`
-      );
-    } else {
-      setError(result.error || 'An unexpected error occurred');
-    }
-  }
+      if (result.success) {
+        router.push(
+          `/login?message=${encodeURIComponent('Check your email to verify your account.')}`
+        );
+      } else {
+        setError('root', {
+          message: result.error || 'An unexpected error occurred',
+        });
+      }
+    });
+  };
 
   return (
     <FormContainer heading="Create User Account">
-      <form className={'flex flex-col gap-4'} onSubmit={handleSubmit}>
-        <Input
+      <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+        <FormInput
           label="Full Name"
-          name="name"
+          id="name"
           type="text"
           placeholder="Enter your full name"
+          error={errors.name?.message}
+          register={register('name', { required: 'Full name is required' })}
           required
         />
-        <Input label="Email" name="email" type="email" placeholder="Enter your email" required />
-        <Input
+        <FormInput
+          label="Email"
+          id="email"
+          type="email"
+          placeholder="Enter your email"
+          error={errors.email?.message}
+          register={register('email', { required: 'Email is required' })}
+          required
+        />
+        <FormInput
           label="Password"
-          name="password"
+          id="password"
           type="password"
           placeholder="Enter your password"
+          error={errors.password?.message}
+          register={register('password', { required: 'Password is required' })}
           required
         />
-        <Input
+        <FormInput
           label="Confirm Password"
-          name="confirmPassword"
+          id="confirmPassword"
           type="password"
           placeholder="Confirm your password"
+          error={errors.confirmPassword?.message}
+          register={register('confirmPassword', { required: 'Please confirm your password' })}
           required
         />
-        {error && <div className="text-red-400">{error}</div>}
-        <SubmitButton loading={isLoading} text="Create Account" />
+        {errors.root && <div className="mb-5 text-sm text-red-500">{errors.root.message}</div>}
+        <SubmitButton loading={isPending} text="Create Account" />
       </form>
-      <div className="mt-4">
-        <p className="text-sm text-cyan-950/50">
-          Already have an account?<Link href={'/login'}> Login here. </Link>
+      <div className="mt-6 text-center text-sm">
+        <p className="text-muted-foreground">
+          Already have an account?{' '}
+          <Link href="/login" className="font-medium text-primary hover:underline">
+            Login here
+          </Link>
         </p>
       </div>
     </FormContainer>

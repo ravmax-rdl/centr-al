@@ -10,7 +10,7 @@ export const LogoutButton: React.FC = () => {
     try {
       await logOut();
       // Redirect to login page after logout
-      window.location.href = '/admin/login';
+      window.location.href = '/login';
     } catch (error) {
       console.error('Logout failed:', error);
     }
