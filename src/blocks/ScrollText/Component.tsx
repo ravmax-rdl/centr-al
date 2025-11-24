@@ -162,7 +162,7 @@ export const ScrollTextBlock: React.FC<Props> = ({
   return (
     <div
       className={cn(
-        'w-[100vw] px-48 py-32 align-middle flex justify-center',
+        'w-full px-8 md:px-8 lg:px-48 py-16 md:py-32 align-middle flex justify-center',
         {
           'container mx-auto': !disableInnerContainer,
         },
@@ -183,8 +183,8 @@ export const ScrollTextBlock: React.FC<Props> = ({
           'text-xl': fontSize === 'xl',
           'text-2xl': fontSize === '2xl',
           'text-3xl': fontSize === '3xl',
-          'text-4xl': fontSize === '4xl',
-          'text-8xl': fontSize === '8xl',
+          'text-4xl md:text-5xl': fontSize === '4xl',
+          'text-4xl md:text-6xl lg:text-8xl': fontSize === '8xl',
         })}
       />
     </div>

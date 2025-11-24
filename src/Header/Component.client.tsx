@@ -62,7 +62,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           y: headerY,
         }}
       >
-        <div className="py-5 md:py-6 px-2 sm:px-0 flex items-center justify-between">
+        <div className="py-4 md:py-6 px-2 sm:px-0 flex items-center justify-between">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}

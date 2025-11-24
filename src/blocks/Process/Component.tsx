@@ -23,19 +23,26 @@ export const ProcessBlock: React.FC<Props> = ({
   lightColor,
 }) => {
   return (
-    <div className="mx-auto my-auto py-32 w-full">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="mx-auto my-auto py-32 w-full"
+    >
       <div
         className={cn(
-          'relative flex h-[600px] w-full max-w-[800px] flex-col items-center mx-auto',
+          'relative flex h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px] w-full max-w-full sm:max-w-[800px] md:max-w-[1000px] lg:max-w-[1200px] flex-col items-center mx-auto px-4',
           className
         )}
       >
         {/* SVG Paths  */}
         <svg
-          className="h-full sm:w-full text-muted"
+          className="h-full w-full text-muted"
           width="100%"
           height="100%"
           viewBox="0 0 200 100"
+          preserveAspectRatio="xMidYMid meet"
         >
           <g
             stroke="currentColor"
@@ -173,55 +180,55 @@ export const ProcessBlock: React.FC<Props> = ({
           </defs>
         </svg>
         {/* Main Box */}
-        <div className="absolute bottom-10 flex w-full flex-col items-center">
+        <div className="absolute bottom-10 flex w-full max-w-[90%] sm:max-w-[85%] md:max-w-[80%] flex-col items-center">
           {/* bottom shadow */}
           <div className="absolute -bottom-4 h-[100px] w-[62%] rounded-lg bg-accent/30" />
           {/* box title */}
-          <div className="absolute -top-3 z-20 flex items-center justify-center rounded-lg border bg-[#101112] px-2 py-1 sm:-top-4 sm:py-1.5">
-            <SparklesIcon className="size-3" />
-            <span className="ml-2 text-[10px]">
+          <div className="absolute -top-3 z-20 flex items-center justify-center rounded-lg border bg-[#101112] px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2">
+            <SparklesIcon className="size-3 sm:size-4" />
+            <span className="ml-2 text-[10px] sm:text-xs md:text-sm">
               {title || 'Data exchange using a customized REST API'}
             </span>
           </div>
           {/* box outter circle */}
-          <div className="absolute -bottom-8 z-30 grid h-[60px] w-[60px] place-items-center rounded-full border-t bg-[#141516] font-semibold text-xs">
+          <div className="absolute -bottom-8 z-30 grid h-[60px] w-[60px] md:h-[70px] md:w-[70px] lg:h-[80px] lg:w-[80px] place-items-center rounded-full border-t bg-[#141516] font-semibold text-xs md:text-sm">
             {circleText || 'SVG'}
           </div>
           {/* box content */}
-          <div className="relative z-10 flex h-[220px] w-full items-center justify-center overflow-hidden rounded-lg border bg-background shadow-md">
+          <div className="relative z-10 flex h-[200px] sm:h-[220px] md:h-[260px] lg:h-[300px] w-full items-center justify-center overflow-hidden rounded-lg border bg-background shadow-md">
             {/* Badges */}
-            <div className="absolute bottom-8 left-12 z-10 h-7 rounded-full bg-[#101112] px-3 text-xs border flex items-center gap-2 ">
-              <HeartHandshakeIcon className="size-4" />
+            <div className="absolute bottom-6 left-8 sm:bottom-8 sm:left-12 md:bottom-10 md:left-16 z-10 h-6 sm:h-7 md:h-8 rounded-full bg-[#101112] px-2 sm:px-3 md:px-4 text-[10px] sm:text-xs md:text-sm border flex items-center gap-1.5 sm:gap-2">
+              <HeartHandshakeIcon className="size-3 sm:size-4 md:size-5" />
               <span>{buttonFirstText || 'LegionDev'}</span>
             </div>
-            <div className="absolute right-16 z-10 hidden h-7 rounded-full bg-[#101112] px-3 text-xs sm:flex border items-center gap-2">
-              <Folder className="size-4" />
+            <div className="absolute right-12 sm:right-16 md:right-20 z-10 hidden sm:flex h-7 md:h-8 rounded-full bg-[#101112] px-3 md:px-4 text-xs md:text-sm border items-center gap-2">
+              <Folder className="size-4 md:size-5" />
               <span>{buttonSecondText || 'v2_updates'}</span>
             </div>
             {/* Circles */}
             <motion.div
-              className="absolute -bottom-14 h-[100px] w-[100px] rounded-full border-t border-accent/20"
+              className="absolute -bottom-14 h-[100px] w-[100px] md:h-[120px] md:w-[120px] lg:h-[140px] lg:w-[140px] rounded-full border-t border-accent/20"
               animate={{
                 scale: [0.98, 1.02, 0.98, 1, 1, 1, 1, 1, 1],
               }}
               transition={{ duration: 2, repeat: Infinity }}
             />
             <motion.div
-              className="absolute -bottom-20 h-[145px] w-[145px] rounded-full border-2 border-accent/25 bg-accent/8"
+              className="absolute -bottom-20 h-[145px] w-[145px] md:h-[175px] md:w-[175px] lg:h-[205px] lg:w-[205px] rounded-full border-2 border-accent/25 bg-accent/8"
               animate={{
                 scale: [1, 1, 1, 0.98, 1.02, 0.98, 1, 1, 1],
               }}
               transition={{ duration: 2, repeat: Infinity }}
             />
             <motion.div
-              className="absolute -bottom-[100px] h-[190px] w-[190px] rounded-full border-2 border-accent/20 bg-accent/6"
+              className="absolute -bottom-[100px] md:-bottom-[120px] lg:-bottom-[140px] h-[190px] w-[190px] md:h-[230px] md:w-[230px] lg:h-[270px] lg:w-[270px] rounded-full border-2 border-accent/20 bg-accent/6"
               animate={{
                 scale: [1, 1, 1, 1, 1, 0.98, 1.02, 0.98, 1, 1],
               }}
               transition={{ duration: 2, repeat: Infinity }}
             />
             <motion.div
-              className="absolute -bottom-[120px] h-[235px] w-[235px] rounded-full border-2 border-accent/15 bg-accent/5"
+              className="absolute -bottom-[120px] md:-bottom-[145px] lg:-bottom-[170px] h-[235px] w-[235px] md:h-[285px] md:w-[285px] lg:h-[335px] lg:w-[335px] rounded-full border-2 border-accent/15 bg-accent/5"
               animate={{
                 scale: [1, 1, 1, 1, 1, 1, 0.98, 1.02, 0.98, 1],
               }}
@@ -230,7 +237,7 @@ export const ProcessBlock: React.FC<Props> = ({
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

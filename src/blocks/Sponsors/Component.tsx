@@ -16,18 +16,20 @@ export const SponsorsBlock: React.FC<SponsorsBlockProps> = (props) => {
   const hoverSpeed = speedOnHover ?? 20;
 
   return (
-    <section className="bg-background overflow-hidden py-16">
-      <div className="group relative m-auto max-w-7xl px-6">
-        <div className="flex flex-col items-center md:flex-row">
+    <section className="bg-background overflow-hidden py-8 md:py-16">
+      <div className="group relative m-auto max-w-7xl">
+        <div className="flex flex-col items-center md:flex-row gap-8 md:gap-0">
           {title && (
-            <div className="md:max-w-44 md:border-r md:pr-6">
-              <p className="text-end text-sm">{title}</p>
+            <div className="w-full md:max-w-44 md:border-r md:pr-6">
+              <p className="text-center md:text-end text-sm font-medium text-muted-foreground">
+                {title}
+              </p>
             </div>
           )}
-          <div className="relative py-6 md:w-[calc(100%-11rem)]">
-            <InfiniteSlider speedOnHover={hoverSpeed} speed={scrollSpeed} gap={112}>
+          <div className="relative w-full md:w-[calc(100%-11rem)]">
+            <InfiniteSlider speedOnHover={hoverSpeed} speed={scrollSpeed} gap={40}>
               {sponsors.map((sponsor, index) => (
-                <div key={index} className="flex items-center h-12">
+                <div key={index} className="flex items-center h-12 mx-4 md:mx-8">
                   {sponsor.url ? (
                     <a
                       href={sponsor.url}

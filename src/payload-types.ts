@@ -849,16 +849,22 @@ export interface ScrollTextBlock {
  * via the `definition` "FeaturesBlock".
  */
 export interface FeaturesBlock {
-  title: string;
-  description?: string | null;
-  features?:
-    | {
-        icon?: (number | null) | Media;
-        title: string;
-        description?: string | null;
-        id?: string | null;
-      }[]
-    | null;
+  featureOne: {
+    percentage: string;
+    title: string;
+  };
+  featureTwo: {
+    title: string;
+    description: string;
+  };
+  featureThree: {
+    title: string;
+    description: string;
+  };
+  featureFour: {
+    title: string;
+    description: string;
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'features';
@@ -1361,15 +1367,29 @@ export interface ScrollTextBlockSelect<T extends boolean = true> {
  * via the `definition` "FeaturesBlock_select".
  */
 export interface FeaturesBlockSelect<T extends boolean = true> {
-  title?: T;
-  description?: T;
-  features?:
+  featureOne?:
     | T
     | {
-        icon?: T;
+        percentage?: T;
+        title?: T;
+      };
+  featureTwo?:
+    | T
+    | {
         title?: T;
         description?: T;
-        id?: T;
+      };
+  featureThree?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+      };
+  featureFour?:
+    | T
+    | {
+        title?: T;
+        description?: T;
       };
   id?: T;
   blockName?: T;
