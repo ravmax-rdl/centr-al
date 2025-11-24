@@ -10,9 +10,9 @@ import { fileURLToPath } from 'url';
 
 import { anyone } from '@/access/anyone';
 import { isAdminOrAuthor } from '@/access/isAdminorAuthor';
-import { isAdminOrModeratorOrAuthor } from '@/access/isAdminorModeratororAuthor';
-import { populateAuthor } from './hooks/populateAuthor';
+import { isAdminOrModerator } from '@/access/isAdminorModerator';
 import { populateAuthors } from './hooks/polulateAuthors';
+import { populateAuthor } from './hooks/populateAuthor';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -22,9 +22,9 @@ export const Media: CollectionConfig = {
   folders: true,
   access: {
     create: isAdminOrAuthor,
-    delete: isAdminOrModeratorOrAuthor,
+    delete: isAdminOrModerator,
     read: anyone,
-    update: isAdminOrModeratorOrAuthor,
+    update: isAdminOrModerator,
   },
   fields: [
     {
