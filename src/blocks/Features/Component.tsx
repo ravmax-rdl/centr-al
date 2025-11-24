@@ -10,15 +10,15 @@ export default function FeaturesBlock({
 }: FeaturesBlockType) {
   // Always render the Features block with fallback values
   return (
-    <section className="bg-gray-50 py-16 md:py-32 dark:bg-transparent">
-      <div className="mx-auto max-w-5xl px-6">
+    <section className="bg-zinc-50 py-20 md:py-32 dark:bg-background">
+      <div className="mx-auto w-full px-6 md:px-12 lg:px-24">
         <div className="relative">
-          <div className="relative z-10 grid grid-cols-6 gap-3">
-            <Card className="relative col-span-full flex overflow-hidden lg:col-span-2">
+          <div className="relative z-10 grid grid-cols-6 gap-4">
+            <Card className="relative col-span-full flex overflow-hidden lg:col-span-2 border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
               <CardContent className="relative m-auto size-fit pt-6">
                 <div className="relative flex h-24 w-56 items-center">
                   <svg
-                    className="text-muted absolute inset-0 size-full"
+                    className="text-zinc-300 dark:text-zinc-700 absolute inset-0 size-full"
                     viewBox="0 0 254 104"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -28,18 +28,18 @@ export default function FeaturesBlock({
                       fill="currentColor"
                     />
                   </svg>
-                  <span className="mx-auto block w-fit text-5xl font-semibold">
+                  <span className="mx-auto block w-fit text-5xl font-semibold text-zinc-900 dark:text-zinc-100">
                     {featureOne?.percentage || '100%'}
                   </span>
                 </div>
-                <h2 className="mt-6 text-center text-3xl font-semibold">
+                <h2 className="mt-6 text-center text-2xl font-semibold text-zinc-900 dark:text-zinc-100">
                   {featureOne?.title || 'Customizable'}
                 </h2>
               </CardContent>
             </Card>
-            <Card className="relative col-span-full overflow-hidden sm:col-span-3 lg:col-span-2">
+            <Card className="relative col-span-full overflow-hidden sm:col-span-3 lg:col-span-2 border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
               <CardContent className="pt-6">
-                <div className="relative mx-auto flex aspect-square size-32 rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
+                <div className="relative mx-auto flex aspect-square size-32 rounded-full border border-zinc-200 dark:border-zinc-800 before:absolute before:-inset-2 before:rounded-full before:border before:border-zinc-100 dark:before:border-zinc-800">
                   <svg
                     className="m-auto h-fit w-24"
                     viewBox="0 0 212 143"
@@ -58,7 +58,7 @@ export default function FeaturesBlock({
                       />
                     </g>
                     <path
-                      className="text-primary-600 dark:text-primary-500"
+                      className="text-blue-600 dark:text-blue-500"
                       d="M3 72H209"
                       stroke="currentColor"
                       strokeWidth="6"
@@ -75,7 +75,7 @@ export default function FeaturesBlock({
                       >
                         <stop stopColor="white" stopOpacity="0" />
                         <stop
-                          className="text-primary-600 dark:text-primary-500"
+                          className="text-blue-600 dark:text-blue-500"
                           offset="1"
                           stopColor="currentColor"
                         />
@@ -86,18 +86,18 @@ export default function FeaturesBlock({
                     </defs>
                   </svg>
                 </div>
-                <div className="relative z-10 mt-6 space-y-2 text-center">
-                  <h2 className="group-hover:text-secondary-950 text-lg font-medium transition dark:text-white">
-                    {featureTwo?.title || 'Secure by default'}
+                <div className="relative z-10 mt-8 space-y-2 text-center">
+                  <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100 transition">
+                    {featureTwo?.title || 'Speed'}
                   </h2>
-                  <p className="text-foreground">
+                  <p className="text-sm text-zinc-600 dark:text-zinc-400">
                     {featureTwo?.description ||
-                      'Provident fugit and vero voluptate. magnam magni doloribus dolores voluptates a sapiente nisi.'}
+                      'Provident fugit vero voluptate. magnam magni doloribus dolores voluptates inventore nisi.'}
                   </p>
                 </div>
               </CardContent>
             </Card>
-            <Card className="relative col-span-full overflow-hidden sm:col-span-3 lg:col-span-2">
+            <Card className="relative col-span-full overflow-hidden sm:col-span-3 lg:col-span-2 border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
               <CardContent className="pt-6">
                 <div className="pt-6 lg:px-6">
                   <svg
@@ -176,38 +176,38 @@ export default function FeaturesBlock({
                     </defs>
                   </svg>
                 </div>
-                <div className="relative z-10 mt-14 space-y-2 text-center">
-                  <h2 className="text-lg font-medium transition">
+                <div className="relative z-10 mt-10 space-y-2 text-center">
+                  <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100 transition">
                     {featureThree?.title || 'Faster than light'}
                   </h2>
-                  <p className="text-foreground">
+                  <p className="text-sm text-zinc-600 dark:text-zinc-400">
                     {featureThree?.description ||
                       'Provident fugit vero voluptate. magnam magni doloribus dolores voluptates inventore nisi.'}
                   </p>
                 </div>
               </CardContent>
             </Card>
-            <Card className="card variant-outlined relative col-span-full overflow-hidden lg:col-span-3">
+            <Card className="card variant-outlined relative col-span-full overflow-hidden lg:col-span-3 border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
               <CardContent className="grid pt-6 sm:grid-cols-2">
                 <div className="relative z-10 flex flex-col justify-between space-y-12 lg:space-y-6">
-                  <div className="relative flex aspect-square size-12 rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
+                  <div className="relative flex aspect-square size-12 rounded-full border border-zinc-200 dark:border-zinc-800 before:absolute before:-inset-2 before:rounded-full before:border before:border-zinc-100 dark:before:border-zinc-800">
                     <Shield className="m-auto size-5" strokeWidth={1} />
                   </div>
                   <div className="space-y-2">
-                    <h2 className="group-hover:text-secondary-950 text-lg font-medium text-zinc-800 transition dark:text-white">
+                    <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100 transition">
                       {featureThree?.title || 'Faster than light'}
                     </h2>
-                    <p className="text-foreground">
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400">
                       {featureThree?.description ||
                         'Provident fugit vero voluptate. Voluptates a sapiente inventore nisi.'}
                     </p>
                   </div>
                 </div>
-                <div className="rounded-tl-(--radius) relative -mb-6 -mr-6 mt-6 h-fit border-l border-t p-6 py-6 sm:ml-6">
+                <div className="rounded-tl-lg relative -mb-6 -mr-6 mt-6 h-fit border-l border-t border-zinc-200 dark:border-zinc-800 p-6 py-6 sm:ml-6">
                   <div className="absolute left-3 top-2 flex gap-1">
-                    <span className="block size-2 rounded-full border dark:border-white/10 dark:bg-white/10"></span>
-                    <span className="block size-2 rounded-full border dark:border-white/10 dark:bg-white/10"></span>
-                    <span className="block size-2 rounded-full border dark:border-white/10 dark:bg-white/10"></span>
+                    <span className="block size-2 rounded-full border border-zinc-300 dark:border-zinc-700 bg-zinc-200 dark:bg-zinc-800"></span>
+                    <span className="block size-2 rounded-full border border-zinc-300 dark:border-zinc-700 bg-zinc-200 dark:bg-zinc-800"></span>
+                    <span className="block size-2 rounded-full border border-zinc-300 dark:border-zinc-700 bg-zinc-200 dark:bg-zinc-800"></span>
                   </div>
                   <svg
                     className="w-full sm:w-[150%]"
@@ -252,29 +252,29 @@ export default function FeaturesBlock({
                 </div>
               </CardContent>
             </Card>
-            <Card className="card variant-outlined relative col-span-full overflow-hidden lg:col-span-3">
+            <Card className="card variant-outlined relative col-span-full overflow-hidden lg:col-span-3 border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
               <CardContent className="grid h-full pt-6 sm:grid-cols-2">
                 <div className="relative z-10 flex flex-col justify-between space-y-12 lg:space-y-6">
-                  <div className="relative flex aspect-square size-12 rounded-full border before:absolute before:-inset-2 before:rounded-full before:border dark:border-white/10 dark:before:border-white/5">
+                  <div className="relative flex aspect-square size-12 rounded-full border border-zinc-200 dark:border-zinc-800 before:absolute before:-inset-2 before:rounded-full before:border before:border-zinc-100 dark:before:border-zinc-800">
                     <Users className="m-auto size-6" strokeWidth={1} />
                   </div>
                   <div className="space-y-2">
-                    <h2 className="text-lg font-medium transition">
+                    <h2 className="text-lg font-medium text-zinc-900 dark:text-zinc-100 transition">
                       {featureFour?.title || 'Keep your loved ones safe'}
                     </h2>
-                    <p className="text-foreground">
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400">
                       {featureFour?.description ||
                         'Voluptate. magnam magni doloribus dolores voluptates a sapiente inventore nisi.'}
                     </p>
                   </div>
                 </div>
-                <div className="before:bg-(--color-border) relative mt-6 before:absolute before:inset-0 before:mx-auto before:w-px sm:-my-6 sm:-mr-6">
+                <div className="before:bg-zinc-200 dark:before:bg-zinc-800 relative mt-6 before:absolute before:inset-0 before:mx-auto before:w-px sm:-my-6 sm:-mr-6">
                   <div className="relative flex h-full flex-col justify-center space-y-6 py-6">
                     <div className="relative flex w-[calc(50%+0.875rem)] items-center justify-end gap-2">
-                      <span className="block h-fit rounded border px-2 py-1 text-xs shadow-sm">
+                      <span className="block h-fit rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-2 py-1 text-xs shadow-sm">
                         Likeur
                       </span>
-                      <div className="ring-background size-7 ring-4">
+                      <div className="ring-white dark:ring-zinc-900 size-7 ring-4">
                         <img
                           className="size-full rounded-full"
                           src="https://avatars.githubusercontent.com/u/102558960?v=4"
@@ -283,22 +283,22 @@ export default function FeaturesBlock({
                       </div>
                     </div>
                     <div className="relative ml-[calc(50%-1rem)] flex items-center gap-2">
-                      <div className="ring-background size-8 ring-4">
+                      <div className="ring-white dark:ring-zinc-900 size-8 ring-4">
                         <img
                           className="size-full rounded-full"
                           src="https://avatars.githubusercontent.com/u/47919550?v=4"
                           alt=""
                         />
                       </div>
-                      <span className="block h-fit rounded border px-2 py-1 text-xs shadow-sm">
+                      <span className="block h-fit rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-2 py-1 text-xs shadow-sm">
                         M. Irung
                       </span>
                     </div>
                     <div className="relative flex w-[calc(50%+0.875rem)] items-center justify-end gap-2">
-                      <span className="block h-fit rounded border px-2 py-1 text-xs shadow-sm">
+                      <span className="block h-fit rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-2 py-1 text-xs shadow-sm">
                         B. Ng
                       </span>
-                      <div className="ring-background size-7 ring-4">
+                      <div className="ring-white dark:ring-zinc-900 size-7 ring-4">
                         <img
                           className="size-full rounded-full"
                           src="https://avatars.githubusercontent.com/u/31113941?v=4"

@@ -16,12 +16,12 @@ export const SponsorsBlock: React.FC<SponsorsBlockProps> = (props) => {
   const hoverSpeed = speedOnHover ?? 20;
 
   return (
-    <section className="bg-background overflow-hidden py-8 md:py-16">
-      <div className="group relative m-auto max-w-7xl">
+    <section className="bg-zinc-50 dark:bg-background overflow-hidden py-12 md:py-20">
+      <div className="group relative m-auto max-w-7xl px-6">
         <div className="flex flex-col items-center md:flex-row gap-8 md:gap-0">
           {title && (
-            <div className="w-full md:max-w-44 md:border-r md:pr-6">
-              <p className="text-center md:text-end text-sm font-medium text-muted-foreground">
+            <div className="w-full md:max-w-44 md:border-r border-zinc-200 dark:border-zinc-800 md:pr-6">
+              <p className="text-center md:text-end text-sm font-medium text-zinc-600 dark:text-zinc-400">
                 {title}
               </p>
             </div>
@@ -35,7 +35,7 @@ export const SponsorsBlock: React.FC<SponsorsBlockProps> = (props) => {
                       href={sponsor.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center"
+                      className="flex items-center opacity-60 hover:opacity-100 transition-opacity duration-300"
                       aria-label={sponsor.name}
                     >
                       {typeof sponsor.logo === 'object' && (
@@ -51,7 +51,7 @@ export const SponsorsBlock: React.FC<SponsorsBlockProps> = (props) => {
                     typeof sponsor.logo === 'object' && (
                       <Media
                         resource={sponsor.logo}
-                        className="h-8 w-auto"
+                        className="h-8 w-auto opacity-60"
                         imgClassName="h-8 w-auto object-contain"
                         alt={sponsor.name}
                       />
@@ -61,8 +61,8 @@ export const SponsorsBlock: React.FC<SponsorsBlockProps> = (props) => {
               ))}
             </InfiniteSlider>
 
-            <div className="bg-linear-to-r from-background absolute inset-y-0 left-0 w-20"></div>
-            <div className="bg-linear-to-l from-background absolute inset-y-0 right-0 w-20"></div>
+            <div className="bg-gradient-to-r from-zinc-50 dark:from-zinc-950 absolute inset-y-0 left-0 w-20"></div>
+            <div className="bg-gradient-to-l from-zinc-50 dark:from-zinc-950 absolute inset-y-0 right-0 w-20"></div>
             <ProgressiveBlur
               className="pointer-events-none absolute left-0 top-0 h-full w-20"
               direction="left"
