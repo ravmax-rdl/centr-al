@@ -12,7 +12,7 @@ export const AnimatedIntro: React.FC<{ introContent: any }> = ({ introContent })
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
     >
-      <RichText className="ms-0 max-w-[48rem]" data={introContent} enableGutter={false} />
+      <RichText className="ms-0 max-w-[48rem]" data={introContent as any} enableGutter={false} />
     </motion.div>
   );
 };

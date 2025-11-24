@@ -1,7 +1,6 @@
 'use client';
 
 import React, { ReactElement, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import SubmitButton from '@/components/UserForm/SubmitButton';
 import { Input } from '@/components/UserForm/Input';
 import { login } from '../actions/login';

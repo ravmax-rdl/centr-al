@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 
 import type { CallToActionBlock as CTABlockProps } from '@/payload-types';

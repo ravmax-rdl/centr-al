@@ -316,3 +316,5 @@ export default function FeaturesBlock({
     </section>
   );
 }
+
+export { FeaturesBlock as FeaturesBlock };
