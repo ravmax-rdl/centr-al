@@ -6,7 +6,7 @@ import SubmitButton from '@/components/UserForm/SubmitButton';
 import { Input } from '@/components/UserForm/Input';
 import { FormContainer } from '@/components/UserForm/FormContainer';
 import { ForgotPassword } from '../actions/forgotPassword';
-import { Response } from '../../create-account/actions/create';
+import { Response } from '../../signup/actions/create';
 
 export default function ForgotForm(): ReactElement {
   const [isLoading, setIsLoading] = useState(false);

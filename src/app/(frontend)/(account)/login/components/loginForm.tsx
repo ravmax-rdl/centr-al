@@ -4,7 +4,7 @@ import React, { ReactElement, useState } from 'react';
 import SubmitButton from '@/components/UserForm/SubmitButton';
 import { Input } from '@/components/UserForm/Input';
 import { login } from '../actions/login';
-import { Response } from '../../create-account/actions/create';
+import { Response } from '../../signup/actions/create';
 import Link from 'next/link';
 import { FormContainer } from '@/components/UserForm/FormContainer';
 
@@ -44,7 +44,7 @@ export default function LoginForm(): ReactElement {
       <div className="mt-4 text-center">
         <p>
           Don&#39;t have an account?{' '}
-          <Link href={'/create-account'} className="underline underline-offset-4">
+          <Link href={'/signup'} className="underline underline-offset-4">
             {' '}
             Create one here.
           </Link>

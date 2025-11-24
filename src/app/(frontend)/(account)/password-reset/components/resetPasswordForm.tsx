@@ -6,7 +6,7 @@ import SubmitButton from '@/components/UserForm/SubmitButton';
 import { Input } from '@/components/UserForm/Input';
 import { FormContainer } from '@/components/UserForm/FormContainer';
 import { resetPassword } from '../actions/resetPassword';
-import { Response } from '../../create-account/actions/create';
+import { Response } from '../../signup/actions/create';
 
 export default function ResetForm({ token }: { token: string }): ReactElement {
   const [isLoading, setIsLoading] = useState(false);

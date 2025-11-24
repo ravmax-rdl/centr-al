@@ -4,7 +4,7 @@ import { getPayload } from 'payload';
 import config from '@payload-config';
 import { getUser } from '../actions/getUser';
 import type { User } from '@/payload-types';
-import { Response } from '../../(account)/create-account/actions/create';
+import { Response } from '../../(account)/signup/actions/create';
 
 interface UpdateParams {
   email: string;

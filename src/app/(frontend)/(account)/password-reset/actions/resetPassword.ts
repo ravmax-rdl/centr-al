@@ -2,7 +2,7 @@
 
 import { getPayload } from 'payload';
 import config from '@payload-config';
-import { Response } from '../../create-account/actions/create';
+import { Response } from '../../signup/actions/create';
 
 export interface ResetPasswordParams {
   token: string;

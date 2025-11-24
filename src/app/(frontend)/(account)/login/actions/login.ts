@@ -4,7 +4,7 @@ import { getPayload } from 'payload';
 import config from '@payload-config';
 import { cookies } from 'next/headers';
 import type { User } from '@/payload-types';
-import { Response } from '../../create-account/actions/create';
+import { Response } from '../../signup/actions/create';
 
 interface LoginParams {
   email: string;
