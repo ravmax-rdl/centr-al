@@ -29,7 +29,7 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = (props) => {
         <div className="mx-auto max-w-3xl text-center">
           <blockquote>
             <p className="text-xl font-medium sm:text-2xl md:text-3xl text-zinc-900 dark:text-zinc-100 leading-relaxed">
-              "{testimonial.quote}"
+              &quot;{testimonial.quote}&quot;
             </p>
 
             <div className="mt-12 flex items-center justify-center gap-6">
