@@ -105,65 +105,61 @@ export const ProcessBlock: React.FC<Props> = ({
             />
           </g>
           {/* Buttons */}
-          <g stroke="currentColor" fill="none" strokeWidth="0.4">
+          <g stroke="currentColor" fill="none" strokeWidth="0.2">
             {/* First Button */}
             <g>
-              <rect fill="#18181B" x="14" y="5" width="34" height="10" rx="4"></rect>
+              <rect fill="#18181B" x="23" y="8" width="16" height="5" rx="1"></rect>
               <text
                 x="31"
-                y="12"
+                y="11"
                 fill="white"
                 stroke="none"
-                fontSize="5"
-                fontWeight="500"
+                fontSize="2"
                 textAnchor="middle"
               >
-                {badgeFirstText || 'GET'}
+                {badgeFirstText}
               </text>
             </g>
             {/* Second Button */}
             <g>
-              <rect fill="#18181B" x="60" y="5" width="34" height="10" rx="4"></rect>
+              <rect fill="#18181B" x="69" y="8" width="16" height="5" rx="1"></rect>
               <text
                 x="77"
-                y="12"
+                y="11"
                 fill="white"
                 stroke="none"
-                fontSize="5"
-                fontWeight="500"
+                fontSize="2"
                 textAnchor="middle"
               >
-                {badgeSecondText || 'POST'}
+                {badgeSecondText}
               </text>
             </g>
             {/* Third Button */}
             <g>
-              <rect fill="#18181B" x="108" y="5" width="34" height="10" rx="4"></rect>
+              <rect fill="#18181B" x="116" y="8" width="16" height="5" rx="1"></rect>
               <text
-                x="125"
-                y="12"
+                x="124"
+                y="11"
                 fill="white"
                 stroke="none"
-                fontSize="5"
-                fontWeight="500"
+                fontSize="2"
                 textAnchor="middle"
               >
-                {badgeThirdText || 'PUT'}
+                {badgeThirdText}
               </text>
             </g>
             {/* Fourth Button */}
             <g>
-              <rect fill="#18181B" x="150" y="5" width="40" height="10" rx="4"></rect>
+              <rect fill="#18181B" x="162" y="8" width="16" height="5" rx="1"></rect>
               <text
                 x="170"
-                y="12"
+                y="11"
                 fill="white"
                 stroke="none"
-                fontSize="5"
-                fontWeight="500"
+                fontSize="2"
                 textAnchor="middle"
               >
-                {badgeFourthText || 'DELETE'}
+                {badgeFourthText}
               </text>
             </g>
           </g>
