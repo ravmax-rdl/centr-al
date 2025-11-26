@@ -28,17 +28,17 @@ export const ProcessBlock: React.FC<Props> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="mx-auto my-auto py-32 w-full bg-zinc-50 dark:bg-background"
+      className="mx-auto my-32 w-full bg-neutral-50 dark:bg-background"
     >
       <div
         className={cn(
-          'relative flex h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px] w-full max-w-full sm:max-w-[800px] md:max-w-[1000px] lg:max-w-[1200px] flex-col items-center mx-auto px-6',
+          'relative flex h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px] mx-auto w-full px-12 md:px-24 lg:px-48 flex-col items-center',
           className
         )}
       >
         {/* SVG Paths  */}
         <svg
-          className="h-full w-full text-zinc-300 dark:text-zinc-700"
+          className="h-full w-full text-neutral-300 dark:text-neutral-700"
           width="100%"
           height="100%"
           viewBox="0 0 200 100"
@@ -208,32 +208,32 @@ export const ProcessBlock: React.FC<Props> = ({
           </defs>
         </svg>
         {/* Main Box */}
-        <div className="absolute bottom-10 flex w-full max-w-[90%] sm:max-w-[85%] md:max-w-[80%] flex-col items-center">
+        <div className="absolute bottom-10 flex w-full max-w-[80%] sm:max-w-[70%] md:max-w-[60%] flex-col items-center">
           {/* bottom shadow */}
           <div className="absolute -bottom-4 h-[100px] w-[62%] rounded-lg bg-accent/30" />
           {/* box title */}
-          <div className="absolute -top-3 z-20 flex items-center justify-center rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-900 dark:bg-zinc-100 px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2">
-            <SparklesIcon className="size-3 sm:size-4 text-zinc-100 dark:text-zinc-900" />
-            <span className="ml-2 text-[10px] sm:text-xs md:text-sm text-zinc-100 dark:text-zinc-900">
+          <div className="absolute -top-3 z-20 flex items-center justify-center rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-900 dark:bg-neutral-100 px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2">
+            <SparklesIcon className="size-3 sm:size-4 text-neutral-100 dark:text-neutral-900" />
+            <span className="ml-2 text-[10px] sm:text-xs md:text-sm text-neutral-100 dark:text-neutral-900">
               {title || 'Data exchange using a customized REST API'}
             </span>
           </div>
           {/* box outer circle */}
-          <div className="absolute -bottom-8 z-30 grid h-[60px] w-[60px] md:h-[70px] md:w-[70px] lg:h-[80px] lg:w-[80px] place-items-center rounded-full border-t border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 font-semibold text-xs md:text-sm text-zinc-900 dark:text-zinc-100">
+          <div className="absolute -bottom-8 z-30 grid h-[60px] w-[60px] md:h-[70px] md:w-[70px] lg:h-[80px] lg:w-[80px] place-items-center rounded-full border-t border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 font-semibold text-xs md:text-sm text-neutral-900 dark:text-neutral-100">
             {circleText || 'SVG'}
           </div>
           {/* box content */}
-          <div className="relative z-10 flex h-[200px] sm:h-[220px] md:h-[260px] lg:h-[300px] w-full items-center justify-center overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-md">
+          <div className="relative z-10 flex h-[200px] sm:h-[220px] md:h-[260px] lg:h-[300px] w-full items-center justify-center overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-md">
             {/* Badges */}
-            <div className="absolute bottom-6 left-8 sm:bottom-8 sm:left-12 md:bottom-10 md:left-16 z-10 h-6 sm:h-7 md:h-8 rounded-full bg-zinc-900 dark:bg-zinc-100 px-2 sm:px-3 md:px-4 text-[10px] sm:text-xs md:text-sm border border-zinc-200 dark:border-zinc-800 flex items-center gap-1.5 sm:gap-2">
-              <HeartHandshakeIcon className="size-3 sm:size-4 md:size-5 text-zinc-100 dark:text-zinc-900" />
-              <span className="text-zinc-100 dark:text-zinc-900">
+            <div className="absolute bottom-6 left-8 sm:bottom-8 sm:left-12 md:bottom-10 md:left-16 z-10 h-6 sm:h-7 md:h-8 rounded-full bg-neutral-900 dark:bg-neutral-100 px-2 sm:px-3 md:px-4 text-[10px] sm:text-xs md:text-sm border border-neutral-200 dark:border-neutral-800 flex items-center gap-1.5 sm:gap-2">
+              <HeartHandshakeIcon className="size-3 sm:size-4 md:size-5 text-neutral-100 dark:text-neutral-900" />
+              <span className="text-neutral-100 dark:text-neutral-900">
                 {buttonFirstText || 'LegionDev'}
               </span>
             </div>
-            <div className="absolute right-12 sm:right-16 md:right-20 z-10 hidden sm:flex h-7 md:h-8 rounded-full bg-zinc-900 dark:bg-zinc-100 px-3 md:px-4 text-xs md:text-sm border border-zinc-200 dark:border-zinc-800 items-center gap-2">
-              <Folder className="size-4 md:size-5 text-zinc-100 dark:text-zinc-900" />
-              <span className="text-zinc-100 dark:text-zinc-900">
+            <div className="absolute right-12 sm:right-16 md:right-20 z-10 hidden sm:flex h-7 md:h-8 rounded-full bg-neutral-900 dark:bg-neutral-100 px-3 md:px-4 text-xs md:text-sm border border-neutral-200 dark:border-neutral-800 items-center gap-2">
+              <Folder className="size-4 md:size-5 text-neutral-100 dark:text-neutral-900" />
+              <span className="text-neutral-100 dark:text-neutral-900">
                 {buttonSecondText || 'v2_updates'}
               </span>
             </div>

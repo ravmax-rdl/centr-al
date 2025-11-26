@@ -73,7 +73,7 @@ export const LandingHeroClient: React.FC<LandingHeroClientProps> = ({
       {/* Foreground content */}
       <div
         ref={contentRef}
-        className="container mb-8 z-20 relative flex items-center justify-center"
+        className="container z-20 relative flex items-center justify-center"
         style={{ opacity: 0 }}
       >
         <div className="md:text-center flex flex-col items-center">
@@ -81,7 +81,7 @@ export const LandingHeroClient: React.FC<LandingHeroClientProps> = ({
           {richText && (
             <div ref={richTextRef} style={{ opacity: 0 }}>
               <RichText
-                className="mb-6 mt-16 [&_h1]:text-5xl md:[&_h1]:text-7xl lg:[&_h1]:text-8xl"
+                className="mb-16 mt-16 [&_h1]:text-5xl md:[&_h1]:text-7xl lg:[&_h1]:text-8xl"
                 data={richText}
                 enableGutter={false}
               />

@@ -16,12 +16,12 @@ export const SponsorsBlock: React.FC<SponsorsBlockProps> = (props) => {
   const hoverSpeed = speedOnHover ?? 20;
 
   return (
-    <section className="bg-zinc-50 dark:bg-background overflow-hidden py-12 md:py-20">
-      <div className="group relative m-auto max-w-7xl px-6">
+    <section className="bg-neutral-50 dark:bg-background overflow-hidden py-8 md:py-16">
+      <div className="group relative mx-auto w-full px-12 md:px-24 lg:px-48">
         <div className="flex flex-col items-center md:flex-row gap-8 md:gap-0">
           {title && (
-            <div className="w-full md:max-w-44 md:border-r border-zinc-200 dark:border-zinc-800 md:pr-6">
-              <p className="text-center md:text-end text-sm font-medium text-zinc-600 dark:text-zinc-400">
+            <div className="w-full md:max-w-44 md:border-r border-neutral-200 dark:border-neutral-800 md:pr-6">
+              <p className="text-center md:text-end text-sm font-medium text-neutral-600 dark:text-neutral-400">
                 {title}
               </p>
             </div>
@@ -61,8 +61,8 @@ export const SponsorsBlock: React.FC<SponsorsBlockProps> = (props) => {
               ))}
             </InfiniteSlider>
 
-            <div className="bg-gradient-to-r from-zinc-50 dark:from-zinc-950 absolute inset-y-0 left-0 w-20"></div>
-            <div className="bg-gradient-to-l from-zinc-50 dark:from-zinc-950 absolute inset-y-0 right-0 w-20"></div>
+            <div className="bg-gradient-to-r from-neutral-50 dark:from-neutral-950 absolute inset-y-0 left-0 w-20"></div>
+            <div className="bg-gradient-to-l from-neutral-50 dark:from-neutral-950 absolute inset-y-0 right-0 w-20"></div>
             <ProgressiveBlur
               className="pointer-events-none absolute left-0 top-0 h-full w-20"
               direction="left"

@@ -53,9 +53,9 @@ export const ArchiveBlock: React.FC<
   }
 
   return (
-    <div className="my-16" id={`block-${id}`}>
+    <div className="mx-auto w-full px-8 md:px-16 lg:px-36" id={`block-${id}`}>
       {introContent && (
-        <div className="container mb-16">
+        <div className="container">
           <AnimatedIntro introContent={introContent} />
         </div>
       )}
