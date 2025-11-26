@@ -19,6 +19,11 @@
   padding-bottom: 0px;
 }
 
+/* default logout */
+.nav__controls {
+ visibility: hidden;
+}
+
 /* Dashboard Card Labels */
 .dashboard__label {
   font-size: 36px;

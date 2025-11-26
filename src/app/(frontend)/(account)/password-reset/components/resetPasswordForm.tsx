@@ -1,55 +1,73 @@
 'use client';
 
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
+import { useForm } from 'react-hook-form';
 import SubmitButton from '@/components/UserForm/SubmitButton';
-import { Input } from '@/components/UserForm/Input';
 import { FormContainer } from '@/components/UserForm/FormContainer';
 import { resetPassword } from '../actions/resetPassword';
-import { Response } from '../../create-account/actions/create';
+import { FormInput } from '../../components/FormInput';
+
+interface ResetPasswordFormData {
+  password: string;
+  confirmPassword: string;
+}
 
 export default function ResetForm({ token }: { token: string }): ReactElement {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [isPending, startTransition] = useTransition();
   const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors },
+  } = useForm<ResetPasswordFormData>();
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>): Promise<void> {
-    event.preventDefault();
-    setIsLoading(true);
-    setError(null);
-
-    const formData = new FormData(event.currentTarget);
-
-    const password = formData.get('password') as string;
-    const confirmPassword = formData.get('confirmPassword') as string;
-
-    if (password !== confirmPassword) {
-      setError('Passwords do not match.');
-      setIsLoading(false);
+  const onSubmit = async (data: ResetPasswordFormData) => {
+    if (data.password !== data.confirmPassword) {
+      setError('confirmPassword', { message: 'Passwords do not match.' });
       return;
     }
 
-    const result: Response = await resetPassword({ token, password });
+    startTransition(async () => {
+      const result = await resetPassword({ token, password: data.password });
 
-    setIsLoading(false);
-
-    if (result.success) {
-      router.push(`/login?${encodeURIComponent('Password reset successful. Please log in.')}`);
-    } else {
-      setError(result.error || 'An error occurred while resetting your password.');
-    }
-  }
+      if (result.success) {
+        router.push(
+          `/login?message=${encodeURIComponent('Password reset successful. Please log in.')}`
+        );
+      } else {
+        setError('root', {
+          message: result.error || 'An error occurred while resetting your password.',
+        });
+      }
+    });
+  };
 
   return (
     <FormContainer heading="Reset Your Password">
-      <div className="w-full mx-auto sm:max-w-sm">
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-          <Input name="password" type="password" label="Password" />
-          <Input name="confirmPassword" type="password" label="Confirm Password" />
-          {error && <div className="text-red-400">{error}</div>}
-          <SubmitButton loading={isLoading} text="Reset Password" />
-        </form>
-      </div>
+      <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+        <FormInput
+          label="Password"
+          id="password"
+          type="password"
+          placeholder="Enter your password"
+          error={errors.password?.message}
+          register={register('password', { required: 'Password is required' })}
+          required
+        />
+        <FormInput
+          label="Confirm Password"
+          id="confirmPassword"
+          type="password"
+          placeholder="Confirm your password"
+          error={errors.confirmPassword?.message}
+          register={register('confirmPassword', { required: 'Please confirm your password' })}
+          required
+        />
+        {errors.root && <div className="mb-5 text-sm text-red-500">{errors.root.message}</div>}
+        <SubmitButton loading={isPending} text="Reset Password" />
+      </form>
     </FormContainer>
   );
 }

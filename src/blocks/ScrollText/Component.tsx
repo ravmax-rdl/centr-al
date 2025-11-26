@@ -162,7 +162,7 @@ export const ScrollTextBlock: React.FC<Props> = ({
   return (
     <div
       className={cn(
-        'w-full px-8 md:px-8 lg:px-48 py-16 md:py-32 align-middle flex justify-center',
+        'mx-auto w-full px-12 md:px-24 lg:px-48 md:py-32 align-middle flex justify-center bg-neutral-50 dark:bg-background',
         {
           'container mx-auto': !disableInnerContainer,
         },
@@ -173,7 +173,7 @@ export const ScrollTextBlock: React.FC<Props> = ({
         text={text}
         type={animationType as 'word' | 'letter'}
         textOpacity={textOpacity as 'none' | 'soft' | 'medium'}
-        className={cn('py-8', {
+        className={cn('py-8 text-neutral-900 dark:text-neutral-100', {
           'text-left': textAlign === 'left',
           'text-center justify-center': textAlign === 'center',
           'text-right justify-end': textAlign === 'right',

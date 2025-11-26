@@ -14,13 +14,13 @@ import { Code } from '../../blocks/Code/config';
 import { MediaBlock } from '../../blocks/MediaBlock/config';
 import { Process } from '../../blocks/Process/config';
 import { generatePreviewPath } from '../../utilities/generatePreviewPath';
-import { populateAuthors } from './hooks/populateAuthors';
 import { populateAuthor } from './hooks/populateAuthor';
+import { populateAuthors } from './hooks/populateAuthors';
 import { revalidateDelete, revalidatePost } from './hooks/revalidatePost';
 
 import { anyone } from '@/access/anyone';
 import { isAdminOrAuthor } from '@/access/isAdminorAuthor';
-import { isAdminOrModeratorOrAuthor } from '@/access/isAdminorModeratororAuthor';
+import { isAdminOrModerator } from '@/access/isAdminorModerator';
 import { slugField } from '@/fields/slug';
 import {
   MetaDescriptionField,
@@ -35,9 +35,9 @@ export const Posts: CollectionConfig<'posts'> = {
   folders: true,
   access: {
     create: isAdminOrAuthor,
-    delete: isAdminOrModeratorOrAuthor,
+    delete: isAdminOrModerator,
     read: anyone,
-    update: isAdminOrModeratorOrAuthor,
+    update: isAdminOrModerator,
   },
   // This config controls what's populated by default when a post is referenced
   // https://payloadcms.com/docs/queries/select#defaultpopulate-collection-config-property

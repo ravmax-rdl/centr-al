@@ -2,7 +2,7 @@
 
 import { getPayload } from 'payload';
 import config from '@payload-config';
-import { Response } from '../../create-account/actions/create';
+import { Response } from '../../signup/actions/create';
 
 export interface ResetPasswordParams {
   token: string;
@@ -10,14 +10,16 @@ export interface ResetPasswordParams {
 }
 
 export async function resetPassword({ token, password }: ResetPasswordParams): Promise<Response> {
-  const payload = getPayload({ config });
-
   try {
-    (await payload).resetPassword({
+    const payload = await getPayload({ config });
+    await payload.resetPassword({
       collection: 'users',
       data: { token, password },
       overrideAccess: true,
     });
+    return {
+      success: true,
+    };
   } catch (error) {
     console.log('Error resetting password:', error);
     return {
@@ -25,7 +27,4 @@ export async function resetPassword({ token, password }: ResetPasswordParams): P
       error: 'Failed to reset password. Please try again.',
     };
   }
-  return {
-    success: true,
-  };
 }

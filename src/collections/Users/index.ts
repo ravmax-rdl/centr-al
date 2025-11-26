@@ -3,7 +3,6 @@ import type { CollectionConfig } from 'payload';
 import { anyone } from '@/access/anyone';
 import { isAdmin, isAdminFieldLevel } from '@/access/isAdmin';
 import { isAdminOrModerator } from '@/access/isAdminorModerator';
-import { protectRoles } from './hooks/protectRoles';
 import { getServerSideURL } from '@/utilities/getURL';
 
 export const Users: CollectionConfig = {
@@ -11,8 +10,8 @@ export const Users: CollectionConfig = {
   access: {
     create: anyone,
     delete: isAdmin,
-    read: isAdmin,
-    update: isAdminOrModerator,
+    read: isAdminOrModerator,
+    update: isAdmin,
   },
   admin: {
     defaultColumns: ['name', 'email'],
@@ -71,9 +70,6 @@ export const Users: CollectionConfig = {
       required: true,
       access: {
         update: isAdminFieldLevel,
-      },
-      hooks: {
-        beforeChange: [protectRoles],
       },
     },
   ],

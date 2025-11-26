@@ -10,49 +10,59 @@ export const TestimonialsBlock: React.FC<TestimonialsBlockProps> = (props) => {
     return null;
   }
 
-  // Display the first testimonial (you can extend this to show multiple or a carousel)
-  const testimonial = testimonials[0];
-  const avatarUrl =
-    typeof testimonial.avatar === 'object' && testimonial.avatar?.url
-      ? getMediaUrl(testimonial.avatar.url)
-      : null;
-  const initials = testimonial.author
-    .split(' ')
-    .map((n: string) => n[0])
-    .join('')
-    .toUpperCase()
-    .slice(0, 2);
-
   return (
-    <section className="py-16 md:py-32">
-      <div className="mx-auto max-w-5xl px-6">
-        <div className="mx-auto max-w-2xl text-center">
-          <blockquote>
-            <p className="text-lg font-medium sm:text-xl md:text-3xl">{testimonial.quote}</p>
+    <section className="mx-auto w-full px-12 md:px-24 lg:px-48 py-24 md:py-32 bg-neutral-50 dark:bg-background">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 place-items-center">
+          {testimonials.map((testimonial, index) => {
+            const avatarUrl =
+              typeof testimonial.avatar === 'object' && testimonial.avatar?.url
+                ? getMediaUrl(testimonial.avatar.url)
+                : null;
+            const initials = testimonial.author
+              .split(' ')
+              .map((n: string) => n[0])
+              .join('')
+              .toUpperCase()
+              .slice(0, 2);
 
-            <div className="mt-12 flex items-center justify-center gap-6">
-              <Avatar className="size-12">
-                {avatarUrl && (
-                  <AvatarImage
-                    src={avatarUrl}
-                    alt={testimonial.author}
-                    height="400"
-                    width="400"
-                    loading="lazy"
-                  />
-                )}
-                <AvatarFallback>{initials}</AvatarFallback>
-              </Avatar>
+            return (
+              <div key={index} className="text-center">
+                <blockquote className="h-full flex flex-col">
+                  <p className="text-lg font-medium text-neutral-900 dark:text-neutral-100 leading-relaxed flex-grow">
+                    &quot;{testimonial.quote}&quot;
+                  </p>
 
-              <div className="space-y-1 border-l pl-6">
-                <cite className="font-medium">{testimonial.author}</cite>
-                <span className="text-muted-foreground block text-sm">
-                  {testimonial.role}
-                  {testimonial.company && `, ${testimonial.company}`}
-                </span>
+                  <div className="mt-8 flex items-center justify-center gap-4">
+                    <Avatar className="size-12 ring-2 ring-neutral-200 dark:ring-neutral-800">
+                      {avatarUrl && (
+                        <AvatarImage
+                          src={avatarUrl}
+                          alt={testimonial.author}
+                          height="400"
+                          width="400"
+                          loading="lazy"
+                        />
+                      )}
+                      <AvatarFallback className="bg-neutral-200 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100">
+                        {initials}
+                      </AvatarFallback>
+                    </Avatar>
+
+                    <div className="space-y-1 border-l border-neutral-200 dark:border-neutral-800 pl-4 text-left">
+                      <cite className="font-semibold not-italic text-neutral-900 dark:text-neutral-100 text-sm">
+                        {testimonial.author}
+                      </cite>
+                      <span className="text-neutral-600 dark:text-neutral-400 block text-xs">
+                        {testimonial.role}
+                        {testimonial.company && ` · ${testimonial.company}`}
+                      </span>
+                    </div>
+                  </div>
+                </blockquote>
               </div>
-            </div>
-          </blockquote>
+            );
+          })}
         </div>
       </div>
     </section>

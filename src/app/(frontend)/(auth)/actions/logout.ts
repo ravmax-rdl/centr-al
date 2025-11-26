@@ -1,7 +1,7 @@
 'use server';
 
 import { cookies } from 'next/headers';
-import { Response } from '../../(account)/create-account/actions/create';
+import { Response } from '../../(account)/signup/actions/create';
 
 export async function logout(): Promise<Response> {
   try {
