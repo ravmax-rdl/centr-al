@@ -7,17 +7,18 @@ import { Instrument_Serif } from 'next/font/google';
 import React from 'react';
 
 import { AdminBar } from '@/components/AdminBar';
-import { Footer } from '@/Footer/Component';
 import { GoogleAnalytics } from '@/components/GoogleAnalytics';
+import { Footer } from '@/Footer/Component';
 import { Header } from '@/Header/Component';
 import { Providers } from '@/providers';
 import { InitTheme } from '@/providers/Theme/InitTheme';
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { draftMode } from 'next/headers';
 
-import './globals.css';
-import '../../styles/payloadStyles.css';
 import { getServerSideURL } from '@/utilities/getURL';
+import '../../styles/payloadStyles.css';
+import './globals.css';
 
 const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
@@ -51,6 +52,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
           <Header />
           {children}
+          <SpeedInsights />
           <Footer />
         </Providers>
       </body>
