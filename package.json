@@ -22,6 +22,7 @@
     "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@payloadcms/admin-bar": "3.64.0",
     "@payloadcms/db-postgres": "3.64.0",
     "@payloadcms/email-resend": "3.64.0",
@@ -45,7 +46,6 @@
     "clsx": "^2.1.1",
     "cross-env": "^7.0.3",
     "dotenv": "16.4.7",
-    "dotted-map": "^2.2.3",
     "framer-motion": "^12.23.24",
     "geist": "^1.5.1",
     "graphql": "^16.12.0",
@@ -59,10 +59,10 @@
     "react-dom": "19.1.0",
     "react-hook-form": "7.45.4",
     "react-use-measure": "^2.1.7",
-    "recharts": "2.15.4",
     "sharp": "0.34.2",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^4.1.13"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
