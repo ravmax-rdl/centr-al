@@ -8,6 +8,7 @@ import React from 'react';
 
 import { AdminBar } from '@/components/AdminBar';
 import { Footer } from '@/Footer/Component';
+import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 import { Header } from '@/Header/Component';
 import { Providers } from '@/providers';
 import { InitTheme } from '@/providers/Theme/InitTheme';
@@ -35,6 +36,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       suppressHydrationWarning
     >
       <head>
+        <GoogleAnalytics />
         <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
