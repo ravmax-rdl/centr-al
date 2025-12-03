@@ -62,9 +62,60 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
+  title: {
+    default: 'centrAL - Collaborative Learning Platform for Sri Lankan A/L Students',
+    template: '%s | centrAL',
+  },
+  description:
+    'centrAL is a collaborative learning platform designed specifically for Sri Lankan G.C.E A/L students. Access comprehensive study resources, connect with peers, and excel in your Advanced Level examinations.',
+  applicationName: 'centrAL',
+  keywords: [
+    'Sri Lanka A/L',
+    'Advanced Level',
+    'GCE A/L',
+    'collaborative learning',
+    'study platform',
+    'education',
+    'student resources',
+    'exam preparation',
+  ],
+  authors: [
+    {
+      name: 'centrAL',
+      url: getServerSideURL(),
+    },
+  ],
+  creator: 'centrAL',
+  publisher: 'centrAL',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: mergeOpenGraph(),
   twitter: {
     card: 'summary_large_image',
-    creator: '@payloadcms',
+    title: 'centrAL - Collaborative Learning Platform for Sri Lankan A/L Students',
+    description:
+      'Access comprehensive study resources, connect with peers, and excel in your Advanced Level examinations.',
+    creator: '@studyatcentral',
+    site: '@studyatcentral', 
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
+  manifest: '/manifest.json',
 };
