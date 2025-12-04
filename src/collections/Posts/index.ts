@@ -29,6 +29,7 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields';
+import { authenticatedOrPublished } from '@/access/authenticatedOrPublished';
 
 export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',
@@ -36,7 +37,7 @@ export const Posts: CollectionConfig<'posts'> = {
   access: {
     create: isAdminOrAuthor,
     delete: isAdminOrModerator,
-    read: anyone,
+    read: authenticatedOrPublished,
     update: isAdminOrModerator,
   },
   // This config controls what's populated by default when a post is referenced

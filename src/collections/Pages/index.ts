@@ -25,13 +25,14 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields';
+import { authenticatedOrPublished } from '@/access/authenticatedOrPublished';
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
   access: {
     create: isAdmin,
     delete: isAdmin,
-    read: anyone,
+    read: authenticatedOrPublished,
     update: isAdmin,
   },
   // This config controls what's populated by default when a page is referenced
