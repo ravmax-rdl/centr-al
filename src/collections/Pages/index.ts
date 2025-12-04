@@ -29,6 +29,7 @@ import { authenticatedOrPublished } from '@/access/authenticatedOrPublished';
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
+  trash: true,
   access: {
     create: isAdmin,
     delete: isAdmin,

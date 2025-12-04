@@ -34,6 +34,7 @@ import { authenticatedOrPublished } from '@/access/authenticatedOrPublished';
 export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',
   folders: true,
+  trash: true,
   access: {
     create: isAdminOrAuthor,
     delete: isAdminOrModerator,
