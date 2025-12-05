@@ -21,6 +21,9 @@ export const Media: CollectionConfig = {
   slug: 'media',
   folders: true,
   trash: true,
+  admin: {
+    group: 'Blog Content',
+  },
   access: {
     create: isAdminOrAuthor,
     delete: isAdminOrModerator,
