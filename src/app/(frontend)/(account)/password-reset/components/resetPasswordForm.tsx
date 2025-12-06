@@ -3,15 +3,12 @@
 import React, { ReactElement, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import SubmitButton from '@/components/UserForm/SubmitButton';
 import { FormContainer } from '@/components/UserForm/FormContainer';
 import { resetPassword } from '../actions/resetPassword';
 import { FormInput } from '../../components/FormInput';
-
-interface ResetPasswordFormData {
-  password: string;
-  confirmPassword: string;
-}
+import { resetPasswordSchema, type ResetPasswordFormData } from '../../validation/schemas';
 
 export default function ResetForm({ token }: { token: string }): ReactElement {
   const [isPending, startTransition] = useTransition();
@@ -21,14 +18,11 @@ export default function ResetForm({ token }: { token: string }): ReactElement {
     handleSubmit,
     setError,
     formState: { errors },
-  } = useForm<ResetPasswordFormData>();
+  } = useForm<ResetPasswordFormData>({
+    resolver: zodResolver(resetPasswordSchema),
+  });
 
   const onSubmit = async (data: ResetPasswordFormData) => {
-    if (data.password !== data.confirmPassword) {
-      setError('confirmPassword', { message: 'Passwords do not match.' });
-      return;
-    }
-
     startTransition(async () => {
       const result = await resetPassword({ token, password: data.password });
 
@@ -53,7 +47,7 @@ export default function ResetForm({ token }: { token: string }): ReactElement {
           type="password"
           placeholder="Enter your password"
           error={errors.password?.message}
-          register={register('password', { required: 'Password is required' })}
+          register={register('password')}
           required
         />
         <FormInput
@@ -62,7 +56,7 @@ export default function ResetForm({ token }: { token: string }): ReactElement {
           type="password"
           placeholder="Confirm your password"
           error={errors.confirmPassword?.message}
-          register={register('confirmPassword', { required: 'Please confirm your password' })}
+          register={register('confirmPassword')}
           required
         />
         {errors.root && <div className="mb-5 text-sm text-red-500">{errors.root.message}</div>}

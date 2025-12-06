@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import dynamic from 'next/dynamic';
 
 import type { Page } from '@/payload-types';
 
@@ -6,12 +7,24 @@ import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component';
 import { CallToActionBlock } from '@/blocks/CallToAction/Component';
 import { ContentBlock } from '@/blocks/Content/Component';
 import { FeaturesBlock } from '@/blocks/Features/Component';
-import { FormBlock } from '@/blocks/Form/Component';
 import { MediaBlock } from '@/blocks/MediaBlock/Component';
-import { ProcessBlock } from '@/blocks/Process/Component';
-import { ScrollTextBlock } from '@/blocks/ScrollText/Component';
 import { SponsorsBlock } from '@/blocks/Sponsors/Component';
 import { TestimonialsBlock } from '@/blocks/Testimonials/Component';
+
+// Dynamically import heavy client-side components for better code splitting
+const FormBlock = dynamic(() => import('@/blocks/Form/Component').then((mod) => mod.FormBlock), {
+  ssr: true,
+});
+
+const ProcessBlock = dynamic(
+  () => import('@/blocks/Process/Component').then((mod) => mod.ProcessBlock),
+  { ssr: true }
+);
+
+const ScrollTextBlock = dynamic(
+  () => import('@/blocks/ScrollText/Component').then((mod) => mod.ScrollTextBlock),
+  { ssr: true }
+);
 
 const blockComponents = {
   archive: ArchiveBlock,

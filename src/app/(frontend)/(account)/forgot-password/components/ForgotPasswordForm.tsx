@@ -3,14 +3,12 @@
 import React, { ReactElement, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import SubmitButton from '@/components/UserForm/SubmitButton';
 import { FormContainer } from '@/components/UserForm/FormContainer';
 import { ForgotPassword } from '../actions/forgotPassword';
 import { FormInput } from '../../components/FormInput';
-
-interface ForgotPasswordFormData {
-  email: string;
-}
+import { forgotPasswordSchema, type ForgotPasswordFormData } from '../../validation/schemas';
 
 export default function ForgotForm(): ReactElement {
   const [isPending, startTransition] = useTransition();
@@ -20,7 +18,9 @@ export default function ForgotForm(): ReactElement {
     handleSubmit,
     setError,
     formState: { errors },
-  } = useForm<ForgotPasswordFormData>();
+  } = useForm<ForgotPasswordFormData>({
+    resolver: zodResolver(forgotPasswordSchema),
+  });
 
   const onSubmit = async (data: ForgotPasswordFormData) => {
     startTransition(async () => {
@@ -47,7 +47,7 @@ export default function ForgotForm(): ReactElement {
           type="email"
           placeholder="Enter your email"
           error={errors.email?.message}
-          register={register('email', { required: 'Email is required' })}
+          register={register('email')}
           required
         />
         {errors.root && <div className="mb-5 text-sm text-red-500">{errors.root.message}</div>}

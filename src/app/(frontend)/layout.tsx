@@ -7,16 +7,18 @@ import { Instrument_Serif } from 'next/font/google';
 import React from 'react';
 
 import { AdminBar } from '@/components/AdminBar';
+import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 import { Footer } from '@/Footer/Component';
 import { Header } from '@/Header/Component';
 import { Providers } from '@/providers';
 import { InitTheme } from '@/providers/Theme/InitTheme';
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { draftMode } from 'next/headers';
 
-import './globals.css';
-import '../../styles/payloadStyles.css';
 import { getServerSideURL } from '@/utilities/getURL';
+import '../../styles/payloadStyles.css';
+import './globals.css';
 
 const instrumentSerif = Instrument_Serif({
   subsets: ['latin'],
@@ -35,6 +37,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       suppressHydrationWarning
     >
       <head>
+        <GoogleAnalytics />
         <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
@@ -49,6 +52,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
           <Header />
           {children}
+          <SpeedInsights />
           <Footer />
         </Providers>
       </body>
@@ -58,9 +62,60 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
+  title: {
+    default: 'centrAL - Collaborative Learning Platform for Sri Lankan A/L Students',
+    template: '%s | centrAL',
+  },
+  description:
+    'centrAL is a collaborative learning platform designed specifically for Sri Lankan G.C.E A/L students. Access comprehensive study resources, connect with peers, and excel in your Advanced Level examinations.',
+  applicationName: 'centrAL',
+  keywords: [
+    'Sri Lanka A/L',
+    'Advanced Level',
+    'GCE A/L',
+    'collaborative learning',
+    'study platform',
+    'education',
+    'student resources',
+    'exam preparation',
+  ],
+  authors: [
+    {
+      name: 'centrAL',
+      url: getServerSideURL(),
+    },
+  ],
+  creator: 'centrAL',
+  publisher: 'centrAL',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: mergeOpenGraph(),
   twitter: {
     card: 'summary_large_image',
-    creator: '@payloadcms',
+    title: 'centrAL - Collaborative Learning Platform for Sri Lankan A/L Students',
+    description:
+      'Access comprehensive study resources, connect with peers, and excel in your Advanced Level examinations.',
+    creator: '@studyatcentral',
+    site: '@studyatcentral', 
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
+  manifest: '/manifest.json',
 };
