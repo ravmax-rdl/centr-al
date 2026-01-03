@@ -29,6 +29,13 @@ export default buildConfig({
     user: Users.slug,
     components: {
       actions: ['@/components/LogoutButton#LogoutButton'],
+      views: {
+        analytics: {
+          Component: '@/components/Analytics/AnalyticsDashboard#AnalyticsDashboard',
+          path: '/analytics',
+        },
+      },
+      afterNavLinks: ['@/components/Analytics/AnalyticsNavLink#AnalyticsNavLink'],
     },
     livePreview: {
       breakpoints: [
@@ -107,5 +114,5 @@ export default buildConfig({
     defaultFromAddress: 'noreply@mail.studyatcentral.com',
     defaultFromName: 'CentrAL',
     apiKey: process.env.RESEND_API_KEY || '',
-  })
+  }),
 });

@@ -3,6 +3,7 @@
 import { getPayload } from 'payload';
 import config from '@payload-config';
 import { Response } from '../../signup/actions/create';
+import { serverResetPasswordSchema } from '../../validation/schemas';
 
 export interface ResetPasswordParams {
   token: string;
@@ -10,6 +11,15 @@ export interface ResetPasswordParams {
 }
 
 export async function resetPassword({ token, password }: ResetPasswordParams): Promise<Response> {
+  // Validate input with Zod
+  const validationResult = serverResetPasswordSchema.safeParse({ token, password });
+  if (!validationResult.success) {
+    return {
+      success: false,
+      error: validationResult.error.issues[0]?.message || 'Invalid input',
+    };
+  }
+
   try {
     const payload = await getPayload({ config });
     await payload.resetPassword({

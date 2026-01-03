@@ -1,5 +1,5 @@
-import type { Metadata } from 'next'
-import { getServerSideURL } from './getURL'
+import type { Metadata } from 'next';
+import { getServerSideURL } from './getURL';
 
 const defaultOpenGraph: Metadata['openGraph'] = {
   type: 'website',
@@ -8,10 +8,15 @@ const defaultOpenGraph: Metadata['openGraph'] = {
   images: [
     {
       url: `${getServerSideURL()}/banner.webp`,
+      width: 1200,
+      height: 630,
+      alt: 'centrAL - Collaborative Learning Platform for Sri Lankan A/L Students',
     },
   ],
   siteName: 'centrAL',
   title: 'centrAL',
+  locale: 'en_US',
+  url: getServerSideURL(),
 };
 
 export const mergeOpenGraph = (og?: Metadata['openGraph']): Metadata['openGraph'] => {
@@ -19,5 +24,7 @@ export const mergeOpenGraph = (og?: Metadata['openGraph']): Metadata['openGraph'
     ...defaultOpenGraph,
     ...og,
     images: og?.images ? og.images : defaultOpenGraph.images,
-  }
-}
+    // Ensure siteName is always present
+    siteName: og?.siteName ?? defaultOpenGraph.siteName,
+  };
+};

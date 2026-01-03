@@ -2,6 +2,12 @@
 
 import { getPayload } from 'payload';
 import config from '@payload-config';
+import { serverSignupSchema } from '../../validation/schemas';
+
+export interface Response {
+  success: boolean;
+  error?: string;
+}
 
 interface CreateParams {
   email: string;
@@ -9,12 +15,16 @@ interface CreateParams {
   name: string;
 }
 
-export interface Response {
-  success: boolean;
-  error?: string;
-}
-
 export async function create({ email, password, name }: CreateParams): Promise<Response> {
+  // Validate input with Zod
+  const validationResult = serverSignupSchema.safeParse({ email, password, name });
+  if (!validationResult.success) {
+    return {
+      success: false,
+      error: validationResult.error.issues[0]?.message || 'Invalid input',
+    };
+  }
+
   const payload = await getPayload({ config });
   try {
     const find = await payload.find({

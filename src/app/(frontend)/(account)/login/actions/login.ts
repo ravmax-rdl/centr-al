@@ -5,11 +5,7 @@ import config from '@payload-config';
 import { cookies } from 'next/headers';
 import type { User } from '@/payload-types';
 import { Response } from '../../signup/actions/create';
-
-interface LoginParams {
-  email: string;
-  password: string;
-}
+import { serverLoginSchema, type LoginFormData } from '../../validation/schemas';
 
 export type Result = {
   exp?: number;
@@ -17,7 +13,16 @@ export type Result = {
   user?: User;
 };
 
-export async function login({ email, password }: LoginParams): Promise<Response> {
+export async function login({ email, password }: LoginFormData): Promise<Response> {
+  // Validate input with Zod
+  const validationResult = serverLoginSchema.safeParse({ email, password });
+  if (!validationResult.success) {
+    return {
+      success: false,
+      error: validationResult.error.issues[0]?.message || 'Invalid input',
+    };
+  }
+
   const payload = await getPayload({ config });
   try {
     const result: Result = await payload.login({

@@ -2,16 +2,13 @@
 
 import React, { ReactElement, useTransition } from 'react';
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import SubmitButton from '@/components/UserForm/SubmitButton';
 import { login } from '../actions/login';
 import Link from 'next/link';
 import { FormContainer } from '@/components/UserForm/FormContainer';
 import { FormInput } from '../../components/FormInput';
-
-interface LoginFormData {
-  email: string;
-  password: string;
-}
+import { loginSchema, type LoginFormData } from '../../validation/schemas';
 
 export default function LoginForm(): ReactElement {
   const [isPending, startTransition] = useTransition();
@@ -20,7 +17,9 @@ export default function LoginForm(): ReactElement {
     handleSubmit,
     setError,
     formState: { errors },
-  } = useForm<LoginFormData>();
+  } = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+  });
 
   const onSubmit = async (data: LoginFormData) => {
     startTransition(async () => {
@@ -46,7 +45,7 @@ export default function LoginForm(): ReactElement {
           type="email"
           placeholder="Enter your email"
           error={errors.email?.message}
-          register={register('email', { required: 'Email is required' })}
+          register={register('email')}
           required
         />
         <FormInput
@@ -55,7 +54,7 @@ export default function LoginForm(): ReactElement {
           type="password"
           placeholder="Enter your password"
           error={errors.password?.message}
-          register={register('password', { required: 'Password is required' })}
+          register={register('password')}
           required
         />
         {errors.root && <div className="mb-5 text-sm text-red-500">{errors.root.message}</div>}

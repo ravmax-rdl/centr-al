@@ -29,14 +29,16 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields';
+import { authenticatedOrPublished } from '@/access/authenticatedOrPublished';
 
 export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',
   folders: true,
+  trash: true,
   access: {
     create: isAdminOrAuthor,
     delete: isAdminOrModerator,
-    read: anyone,
+    read: authenticatedOrPublished,
     update: isAdminOrModerator,
   },
   // This config controls what's populated by default when a post is referenced
@@ -52,6 +54,7 @@ export const Posts: CollectionConfig<'posts'> = {
     },
   },
   admin: {
+    group: 'Blog Content',
     defaultColumns: ['title', 'slug', 'updatedAt'],
     livePreview: {
       url: ({ data, req }) => {

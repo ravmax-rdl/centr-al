@@ -76,7 +76,7 @@ const TrustElements: React.FC<{ userCount?: number }> = ({ userCount }) => {
   return (
     <div
       ref={containerRef}
-      className="inline-flex items-center space-x-3 rounded-full py-2 px-3 sm:py-2 sm:px-4 text-xs sm:text-sm backdrop-blur-md bg-white/80 dark:bg-neutral-900/80 shadow-lg border border-border/1"
+      className="inline-flex items-center space-x-3 max-w-2xl rounded-xl py-2 px-3 sm:py-2 sm:px-4 text-xs sm:text-sm backdrop-blur-md bg-white/80 dark:bg-neutral-900/80 shadow-lg border border-border/1"
       style={{ opacity: 0 }}
     >
       <div className="flex -space-x-2 sm:-space-x-3">
@@ -85,7 +85,7 @@ const TrustElements: React.FC<{ userCount?: number }> = ({ userCount }) => {
         ))}
       </div>
       <p ref={textRef} className="text-white whitespace-nowrap font-space" style={{ opacity: 0 }}>
-        <span className="text-white font-semibold">{displayCount}</span> currently on the platform
+        <span className="text-white font-semibold">{displayCount}</span> learning with centrAL
       </p>
     </div>
   );

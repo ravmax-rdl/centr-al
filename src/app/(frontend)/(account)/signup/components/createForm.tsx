@@ -3,18 +3,13 @@
 import React, { ReactElement, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { create } from '../actions/create';
 import Link from 'next/link';
 import { FormContainer } from '@/components/UserForm/FormContainer';
 import SubmitButton from '@/components/UserForm/SubmitButton';
 import { FormInput } from '../../components/FormInput';
-
-interface CreateFormData {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
+import { signupSchema, type SignupFormData } from '../../validation/schemas';
 
 export default function CreateForm(): ReactElement {
   const [isPending, startTransition] = useTransition();
@@ -24,14 +19,11 @@ export default function CreateForm(): ReactElement {
     handleSubmit,
     setError,
     formState: { errors },
-  } = useForm<CreateFormData>();
+  } = useForm<SignupFormData>({
+    resolver: zodResolver(signupSchema),
+  });
 
-  const onSubmit = async (data: CreateFormData) => {
-    if (data.password !== data.confirmPassword) {
-      setError('confirmPassword', { message: 'Passwords do not match' });
-      return;
-    }
-
+  const onSubmit = async (data: SignupFormData) => {
     startTransition(async () => {
       const result = await create({
         email: data.email,
@@ -60,7 +52,7 @@ export default function CreateForm(): ReactElement {
           type="text"
           placeholder="Enter your full name"
           error={errors.name?.message}
-          register={register('name', { required: 'Full name is required' })}
+          register={register('name')}
           required
         />
         <FormInput
@@ -69,7 +61,7 @@ export default function CreateForm(): ReactElement {
           type="email"
           placeholder="Enter your email"
           error={errors.email?.message}
-          register={register('email', { required: 'Email is required' })}
+          register={register('email')}
           required
         />
         <FormInput
@@ -78,7 +70,7 @@ export default function CreateForm(): ReactElement {
           type="password"
           placeholder="Enter your password"
           error={errors.password?.message}
-          register={register('password', { required: 'Password is required' })}
+          register={register('password')}
           required
         />
         <FormInput
@@ -87,7 +79,7 @@ export default function CreateForm(): ReactElement {
           type="password"
           placeholder="Confirm your password"
           error={errors.confirmPassword?.message}
-          register={register('confirmPassword', { required: 'Please confirm your password' })}
+          register={register('confirmPassword')}
           required
         />
         {errors.root && <div className="mb-5 text-sm text-red-500">{errors.root.message}</div>}

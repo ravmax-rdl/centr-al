@@ -20,6 +20,10 @@ const dirname = path.dirname(filename);
 export const Media: CollectionConfig = {
   slug: 'media',
   folders: true,
+  trash: true,
+  admin: {
+    group: 'Blog Content',
+  },
   access: {
     create: isAdminOrAuthor,
     delete: isAdminOrModerator,
@@ -94,10 +98,10 @@ export const Media: CollectionConfig = {
       ],
     },
   ],
-    hooks: {
-      beforeChange: [populateAuthor],
-      afterRead: [populateAuthors],
-    },
+  hooks: {
+    beforeChange: [populateAuthor],
+    afterRead: [populateAuthors],
+  },
   upload: {
     // Upload to the public/media directory in Next.js making them publicly accessible even outside of Payload
     staticDir: path.resolve(dirname, '../../public/media'),
