@@ -7,7 +7,6 @@ import { Instrument_Serif } from 'next/font/google';
 import React from 'react';
 
 import { AdminBar } from '@/components/AdminBar';
-import { GoogleAnalytics } from '@/components/GoogleAnalytics';
 import { Footer } from '@/Footer/Component';
 import { Header } from '@/Header/Component';
 import { Providers } from '@/providers';
@@ -37,10 +36,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       suppressHydrationWarning
     >
       <head>
-        <GoogleAnalytics />
         <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="c996c76b-d270-40e4-ac50-ed3986137173"
+        ></script>
       </head>
       <body className="pt-20 md:pt-24">
         <Providers>
@@ -99,7 +102,7 @@ export const metadata: Metadata = {
     description:
       'Access comprehensive study resources, connect with peers, and excel in your Advanced Level examinations.',
     creator: '@studyatcentral',
-    site: '@studyatcentral', 
+    site: '@studyatcentral',
   },
   robots: {
     index: true,
