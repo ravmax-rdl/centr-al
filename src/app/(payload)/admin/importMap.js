@@ -25,7 +25,9 @@ import { FolderTypeField as FolderTypeField_3817bf644402e67bfe6577f60ef982de } f
 import { RowLabel as RowLabel_ec255a65fa6fa8d1faeb09cf35284224 } from '@/Header/RowLabel'
 import { RowLabel as RowLabel_1f6ff6ff633e3695d348f4f3c58f1466 } from '@/Footer/RowLabel'
 import { LogoutButton as LogoutButton_db9ac62598c46d0f1db201f6af05442e } from '@/components/LogoutButton'
+import { AnalyticsNavLink as AnalyticsNavLink_eb998c85501b270a8f8fa7cae959afe0 } from '@/components/Analytics/AnalyticsNavLink'
 import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
+import { AnalyticsDashboard as AnalyticsDashboard_0146a749ea176e94a4d28059057a3fbb } from '@/components/Analytics/AnalyticsDashboard'
 
 export const importMap = {
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
@@ -55,5 +57,7 @@ export const importMap = {
   "@/Header/RowLabel#RowLabel": RowLabel_ec255a65fa6fa8d1faeb09cf35284224,
   "@/Footer/RowLabel#RowLabel": RowLabel_1f6ff6ff633e3695d348f4f3c58f1466,
   "@/components/LogoutButton#LogoutButton": LogoutButton_db9ac62598c46d0f1db201f6af05442e,
-  "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24
+  "@/components/Analytics/AnalyticsNavLink#AnalyticsNavLink": AnalyticsNavLink_eb998c85501b270a8f8fa7cae959afe0,
+  "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24,
+  "@/components/Analytics/AnalyticsDashboard#AnalyticsDashboard": AnalyticsDashboard_0146a749ea176e94a4d28059057a3fbb
 }
